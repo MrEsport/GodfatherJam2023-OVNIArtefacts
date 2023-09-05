@@ -18,6 +18,7 @@ public class InputManager : MonoBehaviour
     public void OnInputButton1Blue(InputAction.CallbackContext context)
     {
         if (context.started) DebugButton(0);
+        
     }
     public void OnInputButton1Red(InputAction.CallbackContext context)
     {
