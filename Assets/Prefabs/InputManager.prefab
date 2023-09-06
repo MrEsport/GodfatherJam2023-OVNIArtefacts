@@ -57,7 +57,34 @@ MonoBehaviour:
     ButtonLab: 0
   - ButtonPos: 0
     ButtonCol: 0
-    ButtonLab: 0
+    ButtonLab: 1
+  - ButtonPos: 2
+    ButtonCol: 1
+    ButtonLab: 1
+  - ButtonPos: 3
+    ButtonCol: 3
+    ButtonLab: 1
+  - ButtonPos: 1
+    ButtonCol: 0
+    ButtonLab: 2
+  - ButtonPos: 2
+    ButtonCol: 2
+    ButtonLab: 2
+  - ButtonPos: 0
+    ButtonCol: 3
+    ButtonLab: 2
+  - ButtonPos: 0
+    ButtonCol: 3
+    ButtonLab: 3
+  - ButtonPos: 2
+    ButtonCol: 1
+    ButtonLab: 3
+  - ButtonPos: 3
+    ButtonCol: 2
+    ButtonLab: 3
+  onInputPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8314718221245604223
 MonoBehaviour:
   m_ObjectHideFlags: 0
