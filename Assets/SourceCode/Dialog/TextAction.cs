@@ -8,9 +8,9 @@ public class TextAction : TextElementBase
     public class ActionEvent : UnityEvent { }
 
     public event UnityAction OnSuccess { add => OnSuccessAction.AddListener(value); remove => OnSuccessAction.RemoveListener(value); }
-    [SerializeField] private ActionEvent OnSuccessAction;
+    [SerializeField] private GameEvent OnSuccessAction;
     public event UnityAction OnFailed { add => OnFailedAction.AddListener(value); remove => OnFailedAction.RemoveListener(value); }
-    [SerializeField] private ActionEvent OnFailedAction;
+    [SerializeField] private GameEvent OnFailedAction;
 
     public void Success() => OnSuccessAction?.Invoke();
     public void Failed() => OnFailedAction?.Invoke();
