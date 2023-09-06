@@ -17,25 +17,20 @@ public class QTEInfos : ScriptableObject
 
     public QTE CreateQTE(QTE.QTEType type)
     {
-        QTE newQTE = new QTE();
+        QTE newQTE = new QTE(QTE.QTEType.MINOR, QTEMinorTimeLimit,QTEMinorScoreBonus) ;
         switch (type)
         {
             case (QTE.QTEType.MINOR):
-                newQTE.Type = QTE.QTEType.MINOR;
-                newQTE.TimeLimit = QTEMinorTimeLimit;
-                newQTE.ScoreBonus = QTEMinorScoreBonus;
+                newQTE = new QTE(QTE.QTEType.MINOR, QTEMinorTimeLimit, QTEMinorScoreBonus);
                 break;
             case (QTE.QTEType.MEDIUM):
-                newQTE.Type = QTE.QTEType.MEDIUM;
-                newQTE.TimeLimit = QTEMediumTimeLimit;
-                newQTE.ScoreBonus = QTEMediumScoreBonus;
+                newQTE = new QTE(QTE.QTEType.MEDIUM, QTEMediumTimeLimit, QTEMediumScoreBonus);
                 break;
             case (QTE.QTEType.MAJOR):
-                newQTE.Type = QTE.QTEType.MAJOR;
-                newQTE.TimeLimit = QTEMajorTimeLimit;
-                newQTE.ScoreBonus = QTEMajorScoreBonus;
+                newQTE = new QTE(QTE.QTEType.MAJOR, QTEMajorTimeLimit, QTEMajorScoreBonus);
                 break;
         }
+        
         newQTE.ButtonToPress.ButtonPos = InputButton.BPosition.LEFT;
         newQTE.ButtonToPress.ButtonCol = InputButton.BColor.BLUE;
         newQTE.ButtonToPress.ButtonLab = InputButton.BLabel.N1;
