@@ -14,6 +14,7 @@ public class QTE
     public int ScoreBonus;
 
     public InputButton ButtonToPress;
+    public QTERestriction QTERestr;
 
     public QTE(QTEType type, float timeLimit, int scoreBonus)
     {
