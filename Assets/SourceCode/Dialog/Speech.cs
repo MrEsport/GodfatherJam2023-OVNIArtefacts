@@ -21,8 +21,7 @@ public class Speech : ScriptableObject
         return randomColorTextInputAction[Random.Range(0, randomColorTextInputAction.Count)];
     }
 
-    public TextElementBase GetRandomFeedbackText
-        ()
+    public TextElementBase GetRandomFeedbackText()
     {
         return feedbackText[Random.Range(0, feedbackText.Count)];
     }

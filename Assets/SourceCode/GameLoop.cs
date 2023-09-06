@@ -4,6 +4,14 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum GameplayState
+{
+    Starting,
+    FirstPhase,
+    SecondPhase,
+    Ending
+}
+
 public class GameLoop : MonoBehaviour
 {
     #region Static Instance

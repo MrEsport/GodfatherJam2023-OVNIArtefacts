@@ -1,17 +1,21 @@
 using NaughtyAttributes;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Dialog : MonoBehaviour
 {
+    #region Static Instance
     private static Dialog _instance;
+    #endregion
+
+    #region Events
+    public static event UnityAction<InputButton> OnTextActionRead { add => _instance?.onTextActionRead.AddListener(value); remove => _instance?.onTextActionRead.RemoveListener(value); }
+    [SerializeField] private GameEvent<InputButton> onTextActionRead = new GameEvent<InputButton>();
+    #endregion
 
     [SerializeField, Expandable] private Speech speechTextLibrary;
 
-    private TextAction currentTextAction;
-    private int _dialogIndex;
+    private TextAction _currentTextAction;
 
     private void Awake()
     {
@@ -32,45 +36,39 @@ public class Dialog : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Reads the first Dialog Text from the list
-    /// </summary>
-    public static void Begin()
+    #region Static Singleton Functions
+    public static void Read(GameplayState currentState)
     {
-        _instance?.ReadFromTheStart();
+        _instance?.ReadTextAction(currentState);
     }
+    #endregion
 
-    /// <summary>
-    /// Reads the Next Dialog Text
-    /// </summary>
-    public static void Next()
+    private void ReadTextAction(GameplayState currentState)
     {
-        //_instance?.ReadText();
-    }
+        _currentTextAction = currentState == GameplayState.FirstPhase ?
+            speechTextLibrary.GetRandomTextAction() :
+            speechTextLibrary.GetRandomTextActionWithRandomColor();
 
-    /// <summary>
-    /// Resets the Dialog
-    /// </summary>
-    public static void Stop()
-    {
-        _instance?.ResetTextIndex();
-    }
-
-    private void ReadFromTheStart()
-    {
-        _dialogIndex = 0;
-        //ReadText();
+        // onTextActionRead?.Invoke( // Get InputButton from TextAction // )
+        BindActionEvents();
+        ReadText(_currentTextAction);
     }
 
     private void ReadText(TextElementBase text)
     {
         var color = text.GetTextColor;
         Debug.Log(string.Format("<color=#{0:X2}{1:X2}{2:X2}>{3}</color>", (byte)(color.r * 255f), (byte)(color.g * 255f), (byte)(color.b * 255f), text.Text));
-        _dialogIndex++;
     }
 
-    private void ResetTextIndex()
+    private void BindActionEvents()
     {
-        _dialogIndex = 0;
+        // QTESystem.OnQTESuccess += _currentTextAction.Success;
+        // QTESystem.OnQTEFail += _currentTextAction.Fail;
+    }
+
+    private void UnbindActionEvents()
+    {
+        // QTESystem.OnQTESuccess -= _currentTextAction.Success;
+        // QTESystem.OnQTEFail -= _currentTextAction.Fail;
     }
 }
