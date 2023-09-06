@@ -44,33 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676b77382c0aecf4883de06b3a11dbe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DialogList:
-  - rid: 8851364499183370243
-  - rid: 8851364499183370244
-  - rid: 8851364499183370245
-  - rid: 8851364499183370247
-  references:
-    version: 2
-    RefIds:
-    - rid: 8851364499183370243
-      type: {class: TextCommentary, ns: , asm: Assembly-CSharp}
-      data:
-        textLine: Ceci est un dialogue...
-    - rid: 8851364499183370244
-      type: {class: TextAction, ns: , asm: Assembly-CSharp}
-      data:
-        textLine: Blablabla Appuie sur A !
-        OnSuccessAction:
-          m_PersistentCalls:
-            m_Calls: []
-        OnFailedAction:
-          m_PersistentCalls:
-            m_Calls: []
-    - rid: 8851364499183370245
-      type: {class: TextCommentary, ns: , asm: Assembly-CSharp}
-      data:
-        textLine: AH !
-    - rid: 8851364499183370247
-      type: {class: TextCommentary, ns: , asm: Assembly-CSharp}
-      data:
-        textLine: AAAAAAAAAAAAAAAAA
+  speechTextLibrary: {fileID: 11400000, guid: c3d11d057cafd2c4c91a2f3d89ffc133, type: 2}

@@ -1,25 +1,17 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class Dialog : MonoBehaviour
 {
     private static Dialog _instance;
 
-    [ReorderableList, SerializeReference] public List<TextElementBase> DialogList = new List<TextElementBase>();
+    [SerializeField, Expandable] private Speech speechTextLibrary;
 
+    private TextAction currentTextAction;
     private int _dialogIndex;
-
-    #region Inspector Functions
-    [Button(nameof(AddCommentary))]
-    public void AddCommentary()
-        => DialogList.Add(new TextCommentary());
-
-    [Button(nameof(AddAction))]
-    public void AddAction()
-        => DialogList.Add(new TextAction());
-    #endregion
 
     private void Awake()
     {
@@ -28,20 +20,16 @@ public class Dialog : MonoBehaviour
         _instance = this;
     }
 
-    private void Start()
+    private void Update()
     {
-        IEnumerator DialogCoroutine()
+        if (Input.GetKeyDown(KeyCode.Keypad4))
         {
-            Begin();
-            while (_dialogIndex < DialogList.Count)
-            {
-                yield return new WaitForSeconds(2);
-                Next();
-            }
-            Stop();
+            ReadText(speechTextLibrary.GetRandomTextAction());
         }
-
-        StartCoroutine(DialogCoroutine());
+        if (Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            ReadText(speechTextLibrary.GetRandomTextActionWithRandomColor());
+        }
     }
 
     /// <summary>
@@ -57,7 +45,7 @@ public class Dialog : MonoBehaviour
     /// </summary>
     public static void Next()
     {
-        _instance?.ReadText();
+        //_instance?.ReadText();
     }
 
     /// <summary>
@@ -71,12 +59,13 @@ public class Dialog : MonoBehaviour
     private void ReadFromTheStart()
     {
         _dialogIndex = 0;
-        ReadText();
+        //ReadText();
     }
 
-    private void ReadText()
+    private void ReadText(TextElementBase text)
     {
-        Debug.Log(DialogList[_dialogIndex].Line);
+        var color = text.GetTextColor;
+        Debug.Log(string.Format("<color=#{0:X2}{1:X2}{2:X2}>{3}</color>", (byte)(color.r * 255f), (byte)(color.g * 255f), (byte)(color.b * 255f), text.Text));
         _dialogIndex++;
     }
 
