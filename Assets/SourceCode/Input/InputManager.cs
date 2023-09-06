@@ -8,7 +8,10 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] List<InputButton> inputButtons;
 
-    PlayerInput _inputActions;
+    #region Game Events
+    public GameEvent<InputButton> _OnInputPressed;
+
+    #endregion
 
     private void Awake()
     {
@@ -17,8 +20,7 @@ public class InputManager : MonoBehaviour
 
     public void OnInputButton1Blue(InputAction.CallbackContext context)
     {
-        if (context.started) DebugButton(0);
-        
+        if (context.started) _OnInputPressed.Invoke(inputButtons[0]);
     }
     public void OnInputButton1Red(InputAction.CallbackContext context)
     {
