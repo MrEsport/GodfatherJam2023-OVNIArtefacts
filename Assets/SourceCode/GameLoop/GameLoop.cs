@@ -66,7 +66,7 @@ public class GameLoop : MonoBehaviour
     {
     }
 
-    public static void NextText()
+    public static void NextAction()
     {
         _instance?.CheckUpdatePhase();
         _instance?.StartDialogAction();

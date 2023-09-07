@@ -22,8 +22,11 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         Player.OnPlayerLose += StopDialog;
-        QTESystem.OnQTESuccess += GameLoop.NextText;
-        QTESystem.OnQTEFail += GameLoop.NextText;
+        
+        QTESystem.OnQTESuccess += GameLoop.NextAction;
+
+        QTESystem.OnQTEFail += ReadCommentary;
+        QTESystem.OnQTEFail += GameLoop.NextAction;
     }
 
     private void Awake()
@@ -69,6 +72,11 @@ public class Dialog : MonoBehaviour
         onTextActionRead?.Invoke(awaitedButton, restriction);
 
         ReadText(_currentTextAction);
+    }
+
+    private void ReadCommentary()
+    {
+        ReadText(speechTextLibrary.GetRandomCommentary());
     }
 
     private void ReadText(TextElementBase text)
