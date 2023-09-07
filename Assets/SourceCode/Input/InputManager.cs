@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     private static InputManager _instance;
     #endregion
 
-    [SerializeField] List<InputButton> inputButtons;
+    [SerializeField] InputButtonsInfo InputObj;
 
     #region Game Events
     public static event UnityAction<InputButton> OnInputPressed { add => _instance?.onInputPressed?.AddListener(value); remove => _instance?.onInputPressed?.RemoveListener(value); }
@@ -32,51 +32,51 @@ public class InputManager : MonoBehaviour
 
     public void OnInputButton1Blue(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[0]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(0));
     }
     public void OnInputButton1Red(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[1]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(1));
     }
     public void OnInputButton1Yellow(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[2]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(2));
     }
     public void OnInputButton2Blue(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[3]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(3));
     }
     public void OnInputButton2Red(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[4]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(4));
     }
     public void OnInputButton2Green(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[5]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(5));
     }
     public void OnInputButton3Blue(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[6]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(6));
     }
     public void OnInputButton3Yellow(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[7]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(7));
     }
     public void OnInputButton3Green(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[8]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(8));
     }
     public void OnInputButton4Green(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[9]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(9));
     }
     public void OnInputButton4Red(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[10]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(10));
     }
     public void OnInputButton4Yellow(InputAction.CallbackContext context)
     {
-        if (context.started) onInputPressed?.Invoke(inputButtons[11]);
+        if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(11));
     }
 
     void DebugButton(InputButton button)

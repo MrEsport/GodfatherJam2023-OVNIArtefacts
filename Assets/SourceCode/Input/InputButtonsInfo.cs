@@ -2,11 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputButtonsInfo : MonoBehaviour
+[CreateAssetMenu(fileName = "InputButtonsInfo", menuName = "ScriptableObjects/InputButtonsInfo", order = 3)]
+public class InputButtonsInfo : ScriptableObject
 {
-    [CreateAssetMenu(fileName = "InputButtonsInfo", menuName = "ScriptableObjects/InputButtonsInfo", order = 3)]
 
-    List<InputButton> inputButtons;
+    [SerializeField] List<InputButton> inputButtons;
 
+    public InputButton GetInputButton(int index)
+    {
+        return inputButtons[index];
+    }
 
+    public InputButton GetRandomInputButton()
+    {
+        return inputButtons[Random.Range(0,inputButtons.Count)];
+    }
+
+    public InputButton GetInputButtonColor(InputButton.BColor color)
+    {
+        InputButton button = GetRandomInputButton();
+        button.ButtonCol = color;
+        return button;
+    }
 }

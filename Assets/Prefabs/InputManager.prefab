@@ -45,43 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095715d8baa132d4ea66f9ded5fdef74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputButtons:
-  - ButtonPos: 1
-    ButtonCol: 0
-    ButtonLab: 0
-  - ButtonPos: 2
-    ButtonCol: 1
-    ButtonLab: 0
-  - ButtonPos: 0
-    ButtonCol: 2
-    ButtonLab: 0
-  - ButtonPos: 0
-    ButtonCol: 0
-    ButtonLab: 1
-  - ButtonPos: 2
-    ButtonCol: 1
-    ButtonLab: 1
-  - ButtonPos: 3
-    ButtonCol: 3
-    ButtonLab: 1
-  - ButtonPos: 1
-    ButtonCol: 0
-    ButtonLab: 2
-  - ButtonPos: 2
-    ButtonCol: 2
-    ButtonLab: 2
-  - ButtonPos: 0
-    ButtonCol: 3
-    ButtonLab: 2
-  - ButtonPos: 0
-    ButtonCol: 3
-    ButtonLab: 3
-  - ButtonPos: 2
-    ButtonCol: 1
-    ButtonLab: 3
-  - ButtonPos: 3
-    ButtonCol: 2
-    ButtonLab: 3
+  InputObj: {fileID: 11400000, guid: 071cbd1e374429640b8d81b74e9d538c, type: 2}
   onInputPressed:
     m_PersistentCalls:
       m_Calls: []
