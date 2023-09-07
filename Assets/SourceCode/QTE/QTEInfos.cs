@@ -15,9 +15,16 @@ public class QTEInfos : ScriptableObject
     public int QTEMediumScoreBonus;
     public int QTEMajorScoreBonus;
 
-    public QTE CreateQTE(QTE.QTEType type)
+    public QTE CreateQTE
+        (
+        QTE.QTEType type,
+        InputButton.BPosition pos = InputButton.BPosition.LEFT,
+        InputButton.BColor col = InputButton.BColor.BLUE,
+        InputButton.BLabel lab = InputButton.BLabel.N1,
+        QTERestriction QTERestr = QTERestriction.NONE
+        )
     {
-        QTE newQTE = new QTE(QTE.QTEType.MINOR, QTEMinorTimeLimit,QTEMinorScoreBonus) ;
+        QTE newQTE = new QTE(QTE.QTEType.MINOR, QTEMinorTimeLimit, QTEMinorScoreBonus);
         switch (type)
         {
             case (QTE.QTEType.MINOR):
@@ -30,10 +37,10 @@ public class QTEInfos : ScriptableObject
                 newQTE = new QTE(QTE.QTEType.MAJOR, QTEMajorTimeLimit, QTEMajorScoreBonus);
                 break;
         }
-        
-        newQTE.ButtonToPress.ButtonPos = InputButton.BPosition.LEFT;
-        newQTE.ButtonToPress.ButtonCol = InputButton.BColor.BLUE;
-        newQTE.ButtonToPress.ButtonLab = InputButton.BLabel.N1;
+
+        newQTE.ButtonToPress.ButtonPos = pos;
+        newQTE.ButtonToPress.ButtonCol = col;
+        newQTE.ButtonToPress.ButtonLab = lab;
 
         Debug.Log(
             "You need to press the " + newQTE.ButtonToPress.ButtonPos + " "
