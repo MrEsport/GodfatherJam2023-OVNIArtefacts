@@ -20,11 +20,6 @@ public class GameLoop : MonoBehaviour
     private static GameLoop _instance;
     #endregion
 
-    #region Events
-    public static event UnityAction OnPlayerLose { add => _instance?.onPlayerLose.AddListener(value); remove => _instance?.onPlayerLose.RemoveListener(value); }
-    [SerializeField] private GameEvent onPlayerLose = new GameEvent();
-    #endregion
-
     [SerializeField] private ProgressionStats stats;
 
     private GameplayState _currentGameState;
@@ -38,7 +33,7 @@ public class GameLoop : MonoBehaviour
 
     private void Start()
     {
-        onPlayerLose.AddListener(Defeat);
+        Player.OnPlayerLose += Defeat;
 
         _currentGameState = GameplayState.Starting;
     }
@@ -82,7 +77,6 @@ public class GameLoop : MonoBehaviour
     /// </summary>
     public static void ExitGame()
     {
-        _instance?.Defeat();
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
         return;
@@ -105,6 +99,9 @@ public class GameLoop : MonoBehaviour
 
     private void StartDialogAction()
     {
+        if (_currentGameState != GameplayState.FirstPhase && _currentGameState != GameplayState.SecondPhase)
+            return;
+
         Dialog.GenerateTextAction(_currentGameState);
         stats.IncrementActionsPlayed();
     }
@@ -113,10 +110,5 @@ public class GameLoop : MonoBehaviour
     {
         Debug.Log("Player Dead lol, Game Over  x.x");
         _currentGameState = GameplayState.Ending;
-    }
-
-    private void OnDestroy()
-    {
-        onPlayerLose?.RemoveAllListeners();
     }
 }

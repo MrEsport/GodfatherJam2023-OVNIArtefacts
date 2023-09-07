@@ -19,7 +19,7 @@ public class QTEInfos : ScriptableObject
 
     public QTE CreateQTE(InputButton.BColor col, InputButton.BLabel lab, QTERestriction QTERestr)
     {
-        QTE newQTE = new QTE(stats.GetQTETimeOnScreen, stats.GetQTEScoreGain);
+        QTE newQTE = new QTE(stats.GetTimeOnScreen, stats.GetScoreGain, stats.GetScoreLoss, stats.GetHPGain, stats.GetHPLoss);
 
         newQTE.ButtonToPress.ButtonCol = col;
         newQTE.ButtonToPress.ButtonLabel = lab;

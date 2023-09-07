@@ -19,19 +19,22 @@ public class ProgressionStats : ScriptableObject
 
     [Header("HP")]
     [SerializeField] private int healthGain;
+    public int GetHPGain { get => healthGain; }
     [SerializeField] private int healthLoss;
+    public int GetHPLoss { get => healthLoss; }
 
     [Header("Score")]
     [SerializeField] private int scoreGain;
     [SerializeField] private int scoreLoss;
+    public int GetScoreLoss { get => scoreLoss; }
     [SerializeField, CurveRange(0f, 1f, 1f, 10f, EColor.Red)] private AnimationCurve scoreMultiplierProgression;
 
     private float difficultyProgressionPercentage { get => textActionsPlayed / (float)maxRoundsDifficultyCap; }
     public bool HasStarted { get => textActionsPlayed > 0; }
     public bool IsRoundInSecondPhase { get => textActionsPlayed >= roundsBeforeRandomPhase; }
 
-    public float GetQTETimeOnScreen { get => Mathf.Lerp(easyTimeOnScreenInSeconds, hardTimeOnScreenInSeconds ,timeOnScreenLerpCurve.Evaluate(difficultyProgressionPercentage)); }
-    public int GetQTEScoreGain { get => Mathf.RoundToInt(scoreGain * scoreMultiplierProgression.Evaluate(difficultyProgressionPercentage)); }
+    public float GetTimeOnScreen { get => Mathf.Lerp(easyTimeOnScreenInSeconds, hardTimeOnScreenInSeconds ,timeOnScreenLerpCurve.Evaluate(difficultyProgressionPercentage)); }
+    public int GetScoreGain { get => Mathf.RoundToInt(scoreGain * scoreMultiplierProgression.Evaluate(difficultyProgressionPercentage)); }
 
     public void Init()
     {

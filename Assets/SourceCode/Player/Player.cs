@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -17,6 +18,11 @@ public class Player : MonoBehaviour
 
     public static Player _instance;
 
+    #endregion
+
+    #region Events
+    public static event UnityAction OnPlayerLose { add => _instance?.onPlayerLose.AddListener(value); remove => _instance?.onPlayerLose.RemoveListener(value); }
+    [SerializeField] private GameEvent onPlayerLose = new GameEvent();
     #endregion
 
     #region Unity Methods
@@ -71,16 +77,13 @@ public class Player : MonoBehaviour
 
     void CheckHP()
     {
-        if (!gameObject.activeSelf) return;
+        if (!gameObject.activeSelf)
+            return;
 
-        Debug.Log("HP: " + playerHP);
-        if (playerHP <= 0)
-        {
-            Debug.Log("Died");
-            gameObject.SetActive(false);
-        }
-        else Debug.Log("Alive and doing fine :)");
         UpdateHealthbar();
+
+        if (playerHP <= 0)
+            onPlayerLose?.Invoke();
     }
     #endregion
 

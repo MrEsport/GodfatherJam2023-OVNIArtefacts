@@ -19,6 +19,13 @@ public class Dialog : MonoBehaviour
 
     private TextAction _currentTextAction;
 
+    private void Start()
+    {
+        Player.OnPlayerLose += StopDialog;
+        QTESystem.OnQTESuccess += GameLoop.NextText;
+        QTESystem.OnQTEFail += GameLoop.NextText;
+    }
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -59,9 +66,8 @@ public class Dialog : MonoBehaviour
             _ => throw new Exception("Undefined Text Action Restriction")
         };
 
-        onTextActionRead?.Invoke(awaitedButton, restriction);// Get InputButton from TextAction and inputButtonsLibrary
+        onTextActionRead?.Invoke(awaitedButton, restriction);
 
-        BindActionEvents();
         ReadText(_currentTextAction);
     }
 
@@ -71,20 +77,9 @@ public class Dialog : MonoBehaviour
         Debug.Log(string.Format("<color=#{0:X2}{1:X2}{2:X2}>{3}</color>", (byte)(color.r * 255f), (byte)(color.g * 255f), (byte)(color.b * 255f), text.Text));
     }
 
-    private void BindActionEvents()
+    private void StopDialog()
     {
-        QTESystem.OnQTESuccess += UnbindActionEvents;
-        QTESystem.OnQTESuccess += _currentTextAction.Success;
-        QTESystem.OnQTEFail += UnbindActionEvents;
-        QTESystem.OnQTEFail += _currentTextAction.Failed;
-    }
 
-    private void UnbindActionEvents()
-    {
-        QTESystem.OnQTESuccess -= UnbindActionEvents;
-        QTESystem.OnQTESuccess -= _currentTextAction.Success;
-        QTESystem.OnQTEFail -= UnbindActionEvents;
-        QTESystem.OnQTEFail -= _currentTextAction.Failed;
     }
 
     private void OnDestroy()
