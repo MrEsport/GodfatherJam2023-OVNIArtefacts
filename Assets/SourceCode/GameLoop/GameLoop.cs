@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -23,6 +24,11 @@ public class GameLoop : MonoBehaviour
     [SerializeField] private GameEvent onPlayerLose = new GameEvent();
     #endregion
 
+    [SerializeField] private int firstPhaseActionsToPlay = 4;
+
+    private GameplayState _currentGameState;
+    private int _textActionPlayed;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -33,12 +39,26 @@ public class GameLoop : MonoBehaviour
     private void Start()
     {
         onPlayerLose.AddListener(Defeat);
+
+        _currentGameState = GameplayState.FirstPhase;
+    }
+
+    private void Update()
+    {
+        if (_textActionPlayed <= 0 && _currentGameState == GameplayState.FirstPhase)
+            StartDialogAction();
     }
 
     #region Static Singleton Functions
     public static void StartGame()
     {
 
+    }
+
+    public static void NextText()
+    {
+        _instance?.CheckUpdatePhase();
+        _instance?.StartDialogAction();
     }
 
     /// <summary>
@@ -55,9 +75,22 @@ public class GameLoop : MonoBehaviour
     } 
     #endregion
 
+    private void CheckUpdatePhase()
+    {
+        if (_textActionPlayed >= firstPhaseActionsToPlay)
+            _currentGameState = GameplayState.SecondPhase;
+    }
+
+    private void StartDialogAction()
+    {
+        Dialog.GenerateTextAction(_currentGameState);
+        _textActionPlayed++;
+    }
+
     private void Defeat()
     {
         Debug.Log("Player Dead lol, Game Over  x.x");
+        _currentGameState = GameplayState.Ending;
     }
 
     private void OnDestroy()
