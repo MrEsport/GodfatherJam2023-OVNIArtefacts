@@ -42,12 +42,6 @@ public class QTEInfos : ScriptableObject
         newQTE.ButtonToPress.ButtonCol = col;
         newQTE.ButtonToPress.ButtonLab = lab;
 
-        Debug.Log(
-            "You need to press the " + newQTE.ButtonToPress.ButtonPos + " "
-            + newQTE.ButtonToPress.ButtonCol + " on the "
-            + newQTE.ButtonToPress.ButtonLab + "button "
-            );
-        Debug.Log("You have " + newQTE.TimeLimit + " seconds ! Bonus : " + newQTE.ScoreBonus);
         return newQTE;
     }
 

@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using System;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine.Events;
+using Unity.Mathematics;
 
 #region QTE Misc
 public enum QTERestriction
@@ -17,14 +18,18 @@ public enum QTERestriction
 public class QTESystem : MonoBehaviour
 {
     [SerializeField] QTEInfos QTEObj;
-    [SerializeField] InputManager ButtonsObj;
+    [SerializeField] InputButtonsInfo ButtonsObj;
 
     [SerializeField] QTE.QTEType debugType;
     [Button]
     void DebugCreateQTE()
     {
-        QTEObj.CreateQTE(debugType);
+        QTERestriction debugRestr = (QTERestriction)UnityEngine.Random.Range(0, 3);
+        Debug.Log("Restriction : " + debugRestr + ", " + (int)debugRestr);
+        NewQTE(debugType, ButtonsObj.GetRandomInputButton(), debugRestr);
     }
+
+
 
     #region Instance
     private static QTESystem _instance;
@@ -53,28 +58,31 @@ public class QTESystem : MonoBehaviour
     private void Start()
     {
         InputManager.OnInputPressed += InputReceived;
-        Dialog.OnTextActionRead += (b, r) => NewQTE(QTE.QTEType.MEDIUM, b ,r);
     }
 
     void NewQTE(QTE.QTEType type, InputButton button, QTERestriction restr)
-    { 
+    {
         currentQTE = QTEObj.CreateQTE(type, button.ButtonPos, button.ButtonCol, button.ButtonLab, restr);
+        DebugDisplayQTE(currentQTE);
         currentQTECoroutine = StartCoroutine(QTETimer(currentQTE.TimeLimit));
     }
 
     IEnumerator QTETimer(float timer)
     {
         yield return new WaitForSeconds(timer);
+        Debug.Log("<b><color=red> </color></b> TIME OUT, FAILED QTE");
         onQTEFail?.Invoke();
     }
 
 
     void InputReceived(InputButton input)
     {
-        if(currentQTE == null) return;
+        if (currentQTE == null) return;
         if (VerifyQTEInput(currentQTE, currentQTECoroutine, input))
         {
             onQTESuccess?.Invoke();
+            Debug.Log("<b><color=green> </color></b> SUCCEEDED QTE");
+
         }
         else onQTEFail?.Invoke();
     }
@@ -97,4 +105,22 @@ public class QTESystem : MonoBehaviour
         return false;
     }
 
+    void DebugDisplayQTE(QTE QTEToDisplay)
+    {
+        switch (QTEToDisplay.QTERestr)
+        {
+            case QTERestriction.NONE:
+                Debug.Log("You need to press the " + QTEToDisplay.ButtonToPress.ButtonPos + " " + QTEToDisplay.ButtonToPress.ButtonCol + " on the " + QTEToDisplay.ButtonToPress.ButtonLab + "button ");
+                break;
+            case QTERestriction.POSITION:
+                Debug.Log("You need to press any" + QTEToDisplay.ButtonToPress.ButtonPos + " button ");
+
+                break;
+            case QTERestriction.COLOR:
+                Debug.Log("You need to press any" + QTEToDisplay.ButtonToPress.ButtonCol + " button ");
+                break;
+
+        }
+        Debug.Log("You have " + QTEToDisplay.TimeLimit + " seconds ! Bonus : " + QTEToDisplay.ScoreBonus);
+    }
 }
