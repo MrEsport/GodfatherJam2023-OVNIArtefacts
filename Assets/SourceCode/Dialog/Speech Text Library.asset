@@ -15,7 +15,7 @@ MonoBehaviour:
   predefinedTextInputAction:
   - text: Appuie sur du Rouge !
     textColor: 1
-    awaitedActionType: 1
+    awaitedActionType: 0
     actionButtonColor: 1
     actionButton: 0
     OnSuccessAction:
@@ -24,8 +24,151 @@ MonoBehaviour:
     OnFailedAction:
       m_PersistentCalls:
         m_Calls: []
-  - text: "Appuie sur le Vert \xE0 Gauche"
+  - text: Appuie sur du Vert !
     textColor: 2
+    awaitedActionType: 0
+    actionButtonColor: 3
+    actionButton: 1
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Appuie sur du Bleu !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 0
+    actionButton: 1
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: "Appuie sur le Jaune \xE0 gauche !"
+    textColor: 3
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 2
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: "Appuie sur le Bleu \xE0 a droite !"
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 6
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Appuie sur le Rouge au milieu !
+    textColor: 1
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 4
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: It's showtime ! Make it fire !
+    textColor: 1
+    awaitedActionType: 0
+    actionButtonColor: 1
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Du Vert !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 3
+    actionButton: 4
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Du Jaune !
+    textColor: 2
+    awaitedActionType: 0
+    actionButtonColor: 2
+    actionButton: 4
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Du Bleu !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 0
+    actionButton: 4
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Bleu du milieu !
+    textColor: 2
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 3
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Vert de gauche !
+    textColor: 3
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Rouge du milieu !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 4
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Hands up to the sky !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 0
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Rouge proche de l'enceinte !
+    textColor: -1
     awaitedActionType: 1
     actionButtonColor: 0
     actionButton: 1
@@ -35,8 +178,63 @@ MonoBehaviour:
     OnFailedAction:
       m_PersistentCalls:
         m_Calls: []
+  - text: Le Jaune proche des enceintes !
+    textColor: -1
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 11
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: It's time to shine !
+    textColor: 3
+    awaitedActionType: 0
+    actionButtonColor: 2
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Bleu a droite de Yunika !
+    textColor: -1
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 6
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Vert a gauche de Yunika !
+    textColor: -1
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Let me heal your mind !
+    textColor: 2
+    awaitedActionType: 0
+    actionButtonColor: 3
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
   randomColorTextInputAction:
-  - text: Haha Appuie Bleu !
+  - text: Du Bleu !
     textColor: 0
     awaitedActionType: 0
     actionButtonColor: 0
@@ -47,6 +245,360 @@ MonoBehaviour:
     OnFailedAction:
       m_PersistentCalls:
         m_Calls: []
-  feedbackText: []
+  - text: Du Vert !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 0
+    actionButton: 0
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Du Rouge !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 0
+    actionButton: 0
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Du Jaune !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 0
+    actionButton: 0
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Jaune de droite !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 11
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Jaune de gauche !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 2
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Jaune du milieu !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 7
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Rouge du milieu !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 4
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Rouge de droite !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 10
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Rouge de gauche !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 1
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Bleu de gauche !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 0
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Bleu de droite !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 6
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Bleu du milieu !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 3
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Vert de gauche !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Vert de droite !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 9
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Vert du milieu !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 8
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Jaune proche des enceintes !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 2
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Rouge proche des enceintes !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 1
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Bleu proche des enceintes !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 1
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Rouge proche de l'enceinte !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 10
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Jaune proche de l'enceinte !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 11
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Vert proche de l'enceinte !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 9
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Vert a droite de Yunika !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 8
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Jaune a droite de Yunika !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 7
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Bleu a droite de Yunika !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 6
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Bleu a gauche de Yunika !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 3
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Rouge a gauche de Yunika !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 4
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Le Vert a gauche de Yunika !
+    textColor: 0
+    awaitedActionType: 1
+    actionButtonColor: 0
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: It's time to shine !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 2
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Let me heal your mind !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 3
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: It's showtime ! Make it fire !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 1
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Hands up to the sky !
+    textColor: 0
+    awaitedActionType: 0
+    actionButtonColor: 0
+    actionButton: 5
+    OnSuccessAction:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFailedAction:
+      m_PersistentCalls:
+        m_Calls: []
+  feedbackText:
+  - text: Attention !!
+  - text: "Mon petit fr\xE8re ferait mieux "
+  - text: Tu devrais faire jouer quelqu'un d'autre ?
+  - text: "Peut-\xEAtre devrais-tu arr\xEAter d'essayer"
+  - text: "T'es vraiment a fond l\xE0 ?"
+  - text: "Ne t'avise pas de ruiner ma carri\xE8re "
+  - text: Dois-je t'expliquer les couleurs ?
+  - text: Faut pas mentir sur son CV
   uselessCommentary:
-  - text: 'Yahoo !! '
+  - text: "H\xE2te de la pause caf\xE9. Rah le bol\r\nd'\xEAtre toujours fatigu\xE9."
+  - text: Bon c'est l'heure de la rotation! Nan je rigole, t'es tout seul!
+  - text: "Vu ta performance, sa carri\xE8re ne risque pas de d\xE9coller."
+  - text: Tu me donnes presque envie de refuser ton augmentation.
+  - text: "C'est bient\xF4t fini! Ho... dommage qu'ils en redemandent."
+  - text: "Vu la t\xEAte que tu tire, tu devrais aller consulter."
