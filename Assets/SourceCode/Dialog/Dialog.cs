@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,9 @@ public class Dialog : MonoBehaviour
     [SerializeField, Expandable] private Speech speechTextLibrary;
     [SerializeField] private InputButtonsInfo inputButtonsLibrary;
 
+    [Header("UI")]
+    [SerializeField] private TMP_Text textAction_UIText;
+
     private TextAction _currentTextAction;
 
     private void Start()
@@ -25,7 +29,7 @@ public class Dialog : MonoBehaviour
         
         QTESystem.OnQTESuccess += GameLoop.NextAction;
 
-        QTESystem.OnQTEFail += ReadCommentary;
+        QTESystem.OnQTEFail += ReadFeedback;
         QTESystem.OnQTEFail += GameLoop.NextAction;
     }
 
@@ -74,15 +78,19 @@ public class Dialog : MonoBehaviour
         ReadText(_currentTextAction);
     }
 
-    private void ReadCommentary()
+    private void ReadFeedback()
     {
-        ReadText(speechTextLibrary.GetRandomCommentary());
+        ReadText(speechTextLibrary.GetRandomFeedbackText());
     }
 
     private void ReadText(TextElementBase text)
     {
         var color = text.GetTextColor;
-        Debug.Log(string.Format("<color=#{0:X2}{1:X2}{2:X2}>{3}</color>", (byte)(color.r * 255f), (byte)(color.g * 255f), (byte)(color.b * 255f), text.Text));
+
+        textAction_UIText.color = color;
+        textAction_UIText.text = text.Text;
+
+        //Debug.Log(string.Format("<color=#{0:X2}{1:X2}{2:X2}>{3}</color>", (byte)(color.r * 255f), (byte)(color.g * 255f), (byte)(color.b * 255f), text.Text));
     }
 
     private void StopDialog()

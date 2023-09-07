@@ -20,7 +20,7 @@ public class GameLoop : MonoBehaviour
     private static GameLoop _instance;
     #endregion
 
-    [SerializeField] private ProgressionStats stats;
+    [SerializeField, Expandable] private ProgressionStats stats;
 
     private GameplayState _currentGameState;
 
