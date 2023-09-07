@@ -53,6 +53,7 @@ public class QTESystem : MonoBehaviour
     private void Start()
     {
         InputManager.OnInputPressed += InputReceived;
+        Dialog.OnTextActionRead += (b, r) => NewQTE(QTE.QTEType.MEDIUM, b ,r);
     }
 
     void NewQTE(QTE.QTEType type, InputButton button, QTERestriction restr)

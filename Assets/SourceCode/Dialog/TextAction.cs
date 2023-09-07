@@ -45,8 +45,16 @@ public class TextAction : TextElementBase
     [SerializeField] private GameEvent OnFailedAction;
     #endregion
 
-    public void Success() => OnSuccessAction?.Invoke();
-    public void Failed() => OnFailedAction?.Invoke();
+    public void Success()
+    {
+        GameLoop.NextText();
+        // Gain Score/HP
+    }
+    public void Failed()
+    {
+        GameLoop.NextText();
+        // lose Score/HP
+    }
 
 
 }

@@ -9,11 +9,13 @@ public class Dialog : MonoBehaviour
     #endregion
 
     #region Events
-    public static event UnityAction<InputButton> OnTextActionRead { add => _instance?.onTextActionRead.AddListener(value); remove => _instance?.onTextActionRead.RemoveListener(value); }
-    [SerializeField] private GameEvent<InputButton> onTextActionRead = new GameEvent<InputButton>();
+    public static event UnityAction<InputButton, QTERestriction> OnTextActionRead { add => _instance?.onTextActionRead.AddListener(value); remove => _instance?.onTextActionRead.RemoveListener(value); }
+    [SerializeField] private GameEvent<InputButton, QTERestriction> onTextActionRead = new GameEvent<InputButton, QTERestriction>();
     #endregion
 
     [SerializeField, Expandable] private Speech speechTextLibrary;
+
+    //[SerializeField] private InputButtonsInfo inputButtonsLibrary; // ScriptableObject containing Buttons
 
     private TextAction _currentTextAction;
 
@@ -37,7 +39,7 @@ public class Dialog : MonoBehaviour
     }
 
     #region Static Singleton Functions
-    public static void Read(GameplayState currentState)
+    public static void GenerateTextAction(GameplayState currentState)
     {
         _instance?.ReadTextAction(currentState);
     }
@@ -49,7 +51,12 @@ public class Dialog : MonoBehaviour
             speechTextLibrary.GetRandomTextAction() :
             speechTextLibrary.GetRandomTextActionWithRandomColor();
 
-        // onTextActionRead?.Invoke( // Get InputButton from TextAction // )
+        // onTextActionRead?.Invoke( // Get InputButton from TextAction and inputButtonsLibrary // )
+
+        // Replace with Above Invoke and Input Scriptable Get functions
+        onTextActionRead?.Invoke(new InputButton() { ButtonCol = InputButton.BColor.BLUE, ButtonLab = InputButton.BLabel.N1, ButtonPos = InputButton.BPosition.LEFT }, QTERestriction.COLOR);
+        //
+
         BindActionEvents();
         ReadText(_currentTextAction);
     }
@@ -62,13 +69,22 @@ public class Dialog : MonoBehaviour
 
     private void BindActionEvents()
     {
-        // QTESystem.OnQTESuccess += _currentTextAction.Success;
-        // QTESystem.OnQTEFail += _currentTextAction.Fail;
+        QTESystem.OnQTESuccess += UnbindActionEvents;
+        QTESystem.OnQTESuccess += _currentTextAction.Success;
+        QTESystem.OnQTEFail += UnbindActionEvents;
+        QTESystem.OnQTEFail += _currentTextAction.Failed;
     }
 
     private void UnbindActionEvents()
     {
-        // QTESystem.OnQTESuccess -= _currentTextAction.Success;
-        // QTESystem.OnQTEFail -= _currentTextAction.Fail;
+        QTESystem.OnQTESuccess -= UnbindActionEvents;
+        QTESystem.OnQTESuccess -= _currentTextAction.Success;
+        QTESystem.OnQTEFail -= UnbindActionEvents;
+        QTESystem.OnQTEFail -= _currentTextAction.Failed;
+    }
+
+    private void OnDestroy()
+    {
+        onTextActionRead.RemoveAllListeners();
     }
 }
