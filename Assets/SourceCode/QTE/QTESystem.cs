@@ -47,12 +47,12 @@ public class QTESystem : MonoBehaviour
     private void Start()
     {
         InputManager.OnInputPressed += InputReceived;
-        Dialog.OnTextActionRead += (b, r) => NewQTE(QTE.QTEType.MEDIUM, b, r);
+        Dialog.OnTextActionRead += NewQTE;
     }
 
-    void NewQTE(QTE.QTEType type, InputButton button, QTERestriction restr)
+    void NewQTE(InputButton button, QTERestriction restr)
     {
-        currentQTE = QTEObj.CreateQTE(type, button.ButtonCol, button.ButtonLabel, restr);
+        currentQTE = QTEObj.CreateQTE(button.ButtonCol, button.ButtonLabel, restr);
         DebugDisplayQTE(currentQTE);
         currentQTECoroutine = StartCoroutine(QTETimer(currentQTE.TimeLimit));
     }

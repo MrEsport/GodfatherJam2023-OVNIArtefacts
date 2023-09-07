@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b850595043937449ec60a6905d73bc, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: c691347d811d58d4e93218ee109d33cd, type: 2}
   QTEMinorTimeLimit: 7
   QTEMediumTimeLimit: 5
   QTEMajorTimeLimit: 3

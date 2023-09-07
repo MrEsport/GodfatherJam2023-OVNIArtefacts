@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class QTE
 {
-
-    public enum QTEType
-    {
-        MINOR, MEDIUM, MAJOR
-    }
-    public QTEType Type;
     public float TimeLimit;
     public int ScoreBonus;
 
     public InputButton ButtonToPress;
     public QTERestriction QTERestr;
 
-    public QTE(QTEType type, float timeLimit, int scoreBonus)
+    public QTE(float timeLimit, int scoreBonus)
     {
-        Type = type;
         TimeLimit = timeLimit;
         ScoreBonus = scoreBonus;
     }
