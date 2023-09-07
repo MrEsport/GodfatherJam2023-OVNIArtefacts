@@ -44,4 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676b77382c0aecf4883de06b3a11dbe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTextActionRead:
+    m_PersistentCalls:
+      m_Calls: []
   speechTextLibrary: {fileID: 11400000, guid: c3d11d057cafd2c4c91a2f3d89ffc133, type: 2}
+  inputButtonsLibrary: {fileID: 11400000, guid: 071cbd1e374429640b8d81b74e9d538c, type: 2}

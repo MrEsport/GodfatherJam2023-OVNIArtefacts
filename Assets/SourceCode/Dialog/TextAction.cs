@@ -8,7 +8,6 @@ using UnityEngine.Events;
 public class TextAction : TextElementBase
 {
     private enum InputActionType { ButtonColor, SpecificButton }
-    private enum SingleButton { R1, G1, B2, R2, G3, B3 }
 
 
     [SerializeField, ShowIf(nameof(_showTextColorField)), AllowNesting] protected TextColor textColor;
@@ -28,11 +27,24 @@ public class TextAction : TextElementBase
         }
     }
 
+    public QTERestriction GetRestriction
+    {
+        get
+        {
+            return (awaitedActionType == InputActionType.ButtonColor) ?
+                QTERestriction.COLOR :
+                QTERestriction.LABEL;
+        }
+    }
+
+    public InputButton.BColor GetButtonColor { get => actionButtonColor; }
+    public InputButton.BLabel GetButtonLabel { get => actionButton; }
+
     #region Inspector Properties
     [Header("Input Action")]
     [SerializeField] private InputActionType awaitedActionType;
     [SerializeField, ShowIf(nameof(awaitedActionType), InputActionType.ButtonColor), AllowNesting] private InputButton.BColor actionButtonColor;
-    [SerializeField, ShowIf(nameof(awaitedActionType), InputActionType.SpecificButton), AllowNesting] private SingleButton actionButton;
+    [SerializeField, ShowIf(nameof(awaitedActionType), InputActionType.SpecificButton), AllowNesting] private InputButton.BLabel actionButton;
 
     protected virtual bool _showTextColorField { get => true; }
     #endregion
@@ -55,6 +67,4 @@ public class TextAction : TextElementBase
         GameLoop.NextText();
         // lose Score/HP
     }
-
-
 }

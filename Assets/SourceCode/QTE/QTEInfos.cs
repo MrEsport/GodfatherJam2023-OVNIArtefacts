@@ -15,14 +15,7 @@ public class QTEInfos : ScriptableObject
     public int QTEMediumScoreBonus;
     public int QTEMajorScoreBonus;
 
-    public QTE CreateQTE
-        (
-        QTE.QTEType type,
-        InputButton.BPosition pos = InputButton.BPosition.LEFT,
-        InputButton.BColor col = InputButton.BColor.BLUE,
-        InputButton.BLabel lab = InputButton.BLabel.N1,
-        QTERestriction QTERestr = QTERestriction.NONE
-        )
+    public QTE CreateQTE(QTE.QTEType type, InputButton.BColor col, InputButton.BLabel lab, QTERestriction QTERestr)
     {
         QTE newQTE = new QTE(QTE.QTEType.MINOR, QTEMinorTimeLimit, QTEMinorScoreBonus);
         switch (type)
@@ -38,9 +31,9 @@ public class QTEInfos : ScriptableObject
                 break;
         }
 
-        newQTE.ButtonToPress.ButtonPos = pos;
         newQTE.ButtonToPress.ButtonCol = col;
-        newQTE.ButtonToPress.ButtonLab = lab;
+        newQTE.ButtonToPress.ButtonLabel = lab;
+        newQTE.QTERestr = QTERestr;
 
         return newQTE;
     }

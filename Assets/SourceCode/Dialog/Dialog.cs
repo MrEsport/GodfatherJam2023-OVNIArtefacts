@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,8 +15,7 @@ public class Dialog : MonoBehaviour
     #endregion
 
     [SerializeField, Expandable] private Speech speechTextLibrary;
-
-    //[SerializeField] private InputButtonsInfo inputButtonsLibrary; // ScriptableObject containing Buttons
+    [SerializeField] private InputButtonsInfo inputButtonsLibrary;
 
     private TextAction _currentTextAction;
 
@@ -51,11 +51,15 @@ public class Dialog : MonoBehaviour
             speechTextLibrary.GetRandomTextAction() :
             speechTextLibrary.GetRandomTextActionWithRandomColor();
 
-        // onTextActionRead?.Invoke( // Get InputButton from TextAction and inputButtonsLibrary // )
+        QTERestriction restriction = _currentTextAction.GetRestriction;
+        InputButton awaitedButton = restriction switch
+        {
+            QTERestriction.LABEL => inputButtonsLibrary.GetInputButton((int)_currentTextAction.GetButtonLabel),
+            QTERestriction.COLOR => inputButtonsLibrary.GetInputButtonColor(_currentTextAction.GetButtonColor),
+            _ => throw new Exception("Undefined Text Action Restriction")
+        };
 
-        // Replace with Above Invoke and Input Scriptable Get functions
-        onTextActionRead?.Invoke(new InputButton() { ButtonCol = InputButton.BColor.BLUE, ButtonLab = InputButton.BLabel.N1, ButtonPos = InputButton.BPosition.LEFT }, QTERestriction.COLOR);
-        //
+        onTextActionRead?.Invoke(awaitedButton, restriction);// Get InputButton from TextAction and inputButtonsLibrary
 
         BindActionEvents();
         ReadText(_currentTextAction);

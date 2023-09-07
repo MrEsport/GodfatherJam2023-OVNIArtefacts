@@ -11,7 +11,7 @@ using Unity.Mathematics;
 #region QTE Misc
 public enum QTERestriction
 {
-    NONE, POSITION, COLOR
+    LABEL, COLOR
 }
 #endregion
 
@@ -19,17 +19,6 @@ public class QTESystem : MonoBehaviour
 {
     [SerializeField] QTEInfos QTEObj;
     [SerializeField] InputButtonsInfo ButtonsObj;
-
-    [SerializeField] QTE.QTEType debugType;
-    [Button]
-    void DebugCreateQTE()
-    {
-        QTERestriction debugRestr = (QTERestriction)UnityEngine.Random.Range(0, 3);
-        Debug.Log("Restriction : " + debugRestr + ", " + (int)debugRestr);
-        NewQTE(debugType, ButtonsObj.GetRandomInputButton(), debugRestr);
-    }
-
-
 
     #region Instance
     private static QTESystem _instance;
@@ -58,11 +47,12 @@ public class QTESystem : MonoBehaviour
     private void Start()
     {
         InputManager.OnInputPressed += InputReceived;
+        Dialog.OnTextActionRead += (b, r) => NewQTE(QTE.QTEType.MEDIUM, b, r);
     }
 
     void NewQTE(QTE.QTEType type, InputButton button, QTERestriction restr)
     {
-        currentQTE = QTEObj.CreateQTE(type, button.ButtonPos, button.ButtonCol, button.ButtonLab, restr);
+        currentQTE = QTEObj.CreateQTE(type, button.ButtonCol, button.ButtonLabel, restr);
         DebugDisplayQTE(currentQTE);
         currentQTECoroutine = StartCoroutine(QTETimer(currentQTE.TimeLimit));
     }
@@ -89,15 +79,12 @@ public class QTESystem : MonoBehaviour
     bool VerifyQTEInput(QTE QTEToVerify, Coroutine QTETimer, InputButton InputToVerify)
     {
         StopCoroutine(QTETimer);
-        bool doPositionsMatch = InputToVerify.ButtonPos == QTEToVerify.ButtonToPress.ButtonPos;
         bool doColorsMatch = InputToVerify.ButtonCol == QTEToVerify.ButtonToPress.ButtonCol;
-        bool doLabelsMatch = InputToVerify.ButtonLab == QTEToVerify.ButtonToPress.ButtonLab;
+        bool doLabelsMatch = InputToVerify.ButtonLabel == QTEToVerify.ButtonToPress.ButtonLabel;
         switch (QTEToVerify.QTERestr)
         {
-            case QTERestriction.NONE:
-                return (doPositionsMatch && doColorsMatch && doLabelsMatch);
-            case QTERestriction.POSITION:
-                return doPositionsMatch;
+            case QTERestriction.LABEL:
+                return (doColorsMatch && doLabelsMatch);
             case QTERestriction.COLOR:
                 return doColorsMatch;
         }
@@ -109,12 +96,9 @@ public class QTESystem : MonoBehaviour
     {
         switch (QTEToDisplay.QTERestr)
         {
-            case QTERestriction.NONE:
-                Debug.Log("You need to press the " + QTEToDisplay.ButtonToPress.ButtonPos + " " + QTEToDisplay.ButtonToPress.ButtonCol + " on the " + QTEToDisplay.ButtonToPress.ButtonLab + "button ");
+            case QTERestriction.LABEL:
+                Debug.Log("You need to press the " + QTEToDisplay.ButtonToPress.ButtonLabel + "button ");
                 break;
-            case QTERestriction.POSITION:
-                Debug.Log("You need to press any" + QTEToDisplay.ButtonToPress.ButtonPos + " button ");
-
                 break;
             case QTERestriction.COLOR:
                 Debug.Log("You need to press any" + QTEToDisplay.ButtonToPress.ButtonCol + " button ");

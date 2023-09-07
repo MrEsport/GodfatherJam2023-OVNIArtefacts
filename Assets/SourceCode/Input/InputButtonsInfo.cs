@@ -13,15 +13,9 @@ public class InputButtonsInfo : ScriptableObject
         return inputButtons[index];
     }
 
-    public InputButton GetRandomInputButton()
-    {
-        return inputButtons[Random.Range(0,inputButtons.Count)];
-    }
-
     public InputButton GetInputButtonColor(InputButton.BColor color)
     {
-        InputButton button = GetRandomInputButton();
-        button.ButtonCol = color;
+        InputButton button = new InputButton() { ButtonCol = color };
         return button;
     }
 }

@@ -3,10 +3,6 @@ using UnityEngine;
 
 [Serializable] public struct InputButton
 {
-    public enum BPosition
-    {
-        LEFT, TOP, RIGHT, BOTTOM
-    }
     public enum BColor
     {
         BLUE, RED, YELLOW, GREEN
@@ -14,10 +10,9 @@ using UnityEngine;
 
     public enum BLabel
     {
-        N1, N2, N3, N4
+        Blue1, Red1, Yellow1, Blue2, Red2, Green2, Blue3, Yellow3, Green3, Green4, Red4, Yellow4
     }
 
-    public BPosition ButtonPos;
     public BColor ButtonCol;
-    public BLabel ButtonLab;
+    public BLabel ButtonLabel;
 }

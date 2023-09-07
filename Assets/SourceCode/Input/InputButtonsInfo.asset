@@ -13,39 +13,27 @@ MonoBehaviour:
   m_Name: InputButtonsInfo
   m_EditorClassIdentifier: 
   inputButtons:
-  - ButtonPos: 1
-    ButtonCol: 0
-    ButtonLab: 0
-  - ButtonPos: 2
-    ButtonCol: 1
-    ButtonLab: 0
-  - ButtonPos: 0
-    ButtonCol: 2
-    ButtonLab: 0
-  - ButtonPos: 0
-    ButtonCol: 0
-    ButtonLab: 1
-  - ButtonPos: 2
-    ButtonCol: 1
-    ButtonLab: 1
-  - ButtonPos: 3
-    ButtonCol: 3
-    ButtonLab: 1
-  - ButtonPos: 1
-    ButtonCol: 0
-    ButtonLab: 2
-  - ButtonPos: 2
-    ButtonCol: 2
-    ButtonLab: 2
-  - ButtonPos: 0
-    ButtonCol: 3
-    ButtonLab: 2
-  - ButtonPos: 0
-    ButtonCol: 3
-    ButtonLab: 3
-  - ButtonPos: 2
-    ButtonCol: 1
-    ButtonLab: 3
-  - ButtonPos: 3
-    ButtonCol: 2
-    ButtonLab: 3
+  - ButtonCol: 0
+    ButtonLabel: 0
+  - ButtonCol: 1
+    ButtonLabel: 1
+  - ButtonCol: 2
+    ButtonLabel: 2
+  - ButtonCol: 0
+    ButtonLabel: 3
+  - ButtonCol: 1
+    ButtonLabel: 4
+  - ButtonCol: 3
+    ButtonLabel: 5
+  - ButtonCol: 0
+    ButtonLabel: 6
+  - ButtonCol: 2
+    ButtonLabel: 7
+  - ButtonCol: 3
+    ButtonLabel: 8
+  - ButtonCol: 3
+    ButtonLabel: 9
+  - ButtonCol: 1
+    ButtonLabel: 10
+  - ButtonCol: 2
+    ButtonLabel: 11

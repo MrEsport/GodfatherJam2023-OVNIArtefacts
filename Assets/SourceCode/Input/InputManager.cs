@@ -25,11 +25,6 @@ public class InputManager : MonoBehaviour
         _instance = this;
     }
 
-    private void Start()
-    {
-        onInputPressed?.AddListener(DebugButton);
-    }
-
     public void OnInputButton1Blue(InputAction.CallbackContext context)
     {
         if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(0));
@@ -77,14 +72,6 @@ public class InputManager : MonoBehaviour
     public void OnInputButton4Yellow(InputAction.CallbackContext context)
     {
         if (context.started) onInputPressed?.Invoke(InputObj.GetInputButton(11));
-    }
-
-    void DebugButton(InputButton button)
-    {
-        Debug.Log(
-            "Button " + button.ButtonPos +
-            " , Color " + button.ButtonCol +
-            " , Label " + button.ButtonLab);
     }
 
     private void OnDestroy()
