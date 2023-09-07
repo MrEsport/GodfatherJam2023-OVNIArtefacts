@@ -2,15 +2,27 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] int playerHP;
+    [SerializeField] Image healthBar;
+    [SerializeField, Range(0,100)] float HealthBarPercentage;
+
+    [SerializeField] float playerMaxHP;
+    [SerializeField] float playerHP;
     [SerializeField] int playerScore;
 
     [SerializeField] int debugHPAmount;
 
     #region Unity Methods
+
+    private void OnValidate()
+    {
+        if(playerHP > playerMaxHP) playerHP = playerMaxHP;
+        playerHP = playerMaxHP * HealthBarPercentage;
+        UpdateHealthbar();
+    }
     private void Start()
     {
         Debug.Log("Player HP: >" +  playerHP);
@@ -56,6 +68,20 @@ public class Player : MonoBehaviour
             gameObject.SetActive(false);
         }
         else Debug.Log("Alive and doing fine :)");
+        UpdateHealthbar();
+    }
+    #endregion
+
+    #region UI Update
+
+    void UpdateHealthbar()
+    {
+        Mathf.Clamp(playerHP, 0, playerMaxHP);
+        Mathf.Max(playerMaxHP, 0);
+        HealthBarPercentage = playerHP / playerMaxHP * 100;
+        Mathf.Clamp(HealthBarPercentage, 0, 100);
+        healthBar.rectTransform.localScale = new Vector3(HealthBarPercentage, healthBar.rectTransform.localScale.y);
+        Debug.Log("Health : " + HealthBarPercentage);
     }
     #endregion
 
@@ -63,13 +89,15 @@ public class Player : MonoBehaviour
     [Button] void DebugGainHP()
     {
         GainHP(debugHPAmount);
+        UpdateHealthbar();
     }
 
     [Button] void DebugLoseHP()
     {
         LoseHP(debugHPAmount);
+        UpdateHealthbar();
     }
 
     #endregion
-     
+
 }
