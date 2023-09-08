@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using System;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,6 +21,7 @@ public class Dialog : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TMP_Text textAction_UIText;
+    [SerializeField] private TMP_Text feedback_UIText;
 
     private TextAction _currentTextAction;
 
@@ -38,18 +40,6 @@ public class Dialog : MonoBehaviour
         if (_instance != null && _instance != this)
             Destroy(this);
         _instance = this;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            ReadText(speechTextLibrary.GetRandomTextAction());
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            ReadText(speechTextLibrary.GetRandomTextActionWithRandomColor());
-        }
     }
 
     #region Static Singleton Functions
@@ -74,23 +64,33 @@ public class Dialog : MonoBehaviour
         };
 
         onTextActionRead?.Invoke(awaitedButton, restriction);
-
-        ReadText(_currentTextAction);
+        UpdateActionTextUI(_currentTextAction);
+        //ReadText(_currentTextAction);
     }
 
     private void ReadFeedback()
     {
-        ReadText(speechTextLibrary.GetRandomFeedbackText());
+        UpdateFeedbackTextUI(speechTextLibrary.GetRandomFeedbackText());
+        //ReadText(speechTextLibrary.GetRandomFeedbackText());
     }
-
+/*
     private void ReadText(TextElementBase text)
     {
         var color = text.GetTextColor;
 
-        textAction_UIText.color = color;
-        textAction_UIText.text = text.Text;
-
         //Debug.Log(string.Format("<color=#{0:X2}{1:X2}{2:X2}>{3}</color>", (byte)(color.r * 255f), (byte)(color.g * 255f), (byte)(color.b * 255f), text.Text));
+    }*/
+
+    private void UpdateActionTextUI(TextElementBase text)
+    {
+        textAction_UIText.color = text.GetTextColor;
+        textAction_UIText.text = text.Text;
+    }
+
+    private void UpdateFeedbackTextUI(TextElementBase text)
+    {
+        feedback_UIText.color = text.GetTextColor;
+        feedback_UIText.text = text.Text;
     }
 
     private void StopDialog()
