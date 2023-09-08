@@ -50,6 +50,7 @@ public class IngameAnimations : MonoBehaviour
     void ChangeYunikaSprite(int newSprite)
     {
         newSprite = Mathf.Clamp(newSprite, 1, yunikaSprites.Length - 1);
+        currentSprite = Mathf.Clamp(currentSprite, 1, yunikaSprites.Length - 1);
         yunikaObj.sprite = yunikaSprites[newSprite];
     }
 
