@@ -1,8 +1,12 @@
 using NaughtyAttributes;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
+using Random = UnityEngine.Random;
 
 public class Dialog : MonoBehaviour
 {
@@ -19,23 +23,44 @@ public class Dialog : MonoBehaviour
     [SerializeField] private InputButtonsInfo inputButtonsLibrary;
 
     [Header("UI")]
-    [SerializeField] private TMP_Text textAction_UIText;
+    [SerializeField] private GameObject idolBubbleObject;
+    [SerializeField] private List<GameObject> managerBubbleObjects;
     [SerializeField] private TMP_Text feedback_UIText;
+    [SerializeField] private List<Sprite> bubbleSprites;
+    private TMP_Text _idoltextAction_UIText;
+    private List<TMP_Text> _managertextAction_UITexts;
+    private Image _idolBubbleImage;
+    private List<Image> _managerBubbleImages;
+    private Image _usedBubbleImage;
 
     private TextAction _currentTextAction;
-
-    private void Start()
-    {
-        Player.OnPlayerLose += StopDialog;
-
-        QTESystem.OnQTEFail += ReadFeedback;
-    }
 
     private void Awake()
     {
         if (_instance != null && _instance != this)
             Destroy(this);
         _instance = this;
+    }
+
+    private void Start()
+    {
+        Player.OnPlayerLose += StopDialog;
+
+        QTESystem.OnQTEFail += ReadFeedback;
+        QTESystem.OnQTEFail += () => SetBubbleSprite(_usedBubbleImage, 2);
+        QTESystem.OnQTESuccess += () => SetBubbleSprite(_usedBubbleImage, 1);
+
+        _idoltextAction_UIText = idolBubbleObject.GetComponentInChildren<TMP_Text>();
+        _idolBubbleImage = idolBubbleObject.GetComponent<Image>();
+        _managertextAction_UITexts = new List<TMP_Text>();
+        _managerBubbleImages = new List<Image>();
+        for (int i = 0; i < managerBubbleObjects.Count; i++)
+        {
+            _managertextAction_UITexts.Add(managerBubbleObjects[i].GetComponentInChildren<TMP_Text>());
+            _managerBubbleImages.Add(managerBubbleObjects[i].GetComponent<Image>());
+        }
+
+        HideAllBubbles();
     }
 
     #region Static Singleton Functions
@@ -47,6 +72,8 @@ public class Dialog : MonoBehaviour
 
     private void ReadTextAction(GameplayState currentState)
     {
+        HideAllBubbles();
+
         _currentTextAction = currentState == GameplayState.FirstPhase ?
             speechTextLibrary.GetRandomTextAction() :
             speechTextLibrary.GetRandomTextActionWithRandomColor();
@@ -70,8 +97,28 @@ public class Dialog : MonoBehaviour
 
     private void UpdateActionTextUI(TextElementBase text)
     {
-        textAction_UIText.color = text.GetTextColor;
-        textAction_UIText.text = text.Text;
+        switch (text.Speaker)
+        {
+            case Speaker.IDOL:
+                _usedBubbleImage = _idolBubbleImage;
+                UpdateTextUI(_idoltextAction_UIText, text);
+                break;
+            case Speaker.MANAGER:
+                int side = Random.Range(0, 2);
+                _usedBubbleImage = _managerBubbleImages[side];
+                UpdateTextUI(_managertextAction_UITexts[side], text);
+                break;
+            default:
+                break;
+        }
+        SetBubbleSprite(_usedBubbleImage, 0);
+    }
+
+    private void UpdateTextUI(TMP_Text uiText, TextElementBase text)
+    {
+        uiText.transform.parent.gameObject.SetActive(true);
+        uiText.color = text.GetTextColor;
+        uiText.text = text.Text;
     }
 
     private void UpdateFeedbackTextUI(TextElementBase text)
@@ -80,9 +127,21 @@ public class Dialog : MonoBehaviour
         feedback_UIText.text = text.Text;
     }
 
+    private void SetBubbleSprite(Image bubble, int index)
+    {
+        bubble.sprite = bubbleSprites[index];
+    }
+
+    private void HideAllBubbles()
+    {
+        idolBubbleObject.gameObject.SetActive(false);
+        for (int i = 0; i < managerBubbleObjects.Count; i++)
+            managerBubbleObjects[i].gameObject.SetActive(false);
+    }
+
     private void StopDialog()
     {
-
+        HideAllBubbles();
     }
 
     private void OnDestroy()
