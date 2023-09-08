@@ -27,11 +27,8 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         Player.OnPlayerLose += StopDialog;
-        
-        QTESystem.OnQTESuccess += GameLoop.NextAction;
 
         QTESystem.OnQTEFail += ReadFeedback;
-        QTESystem.OnQTEFail += GameLoop.NextAction;
     }
 
     private void Awake()
@@ -64,21 +61,12 @@ public class Dialog : MonoBehaviour
 
         onTextActionRead?.Invoke(awaitedButton, restriction);
         UpdateActionTextUI(_currentTextAction);
-        //ReadText(_currentTextAction);
     }
 
     private void ReadFeedback()
     {
         UpdateFeedbackTextUI(speechTextLibrary.GetRandomFeedbackText());
-        //ReadText(speechTextLibrary.GetRandomFeedbackText());
     }
-/*
-    private void ReadText(TextElementBase text)
-    {
-        var color = text.GetTextColor;
-
-        //Debug.Log(string.Format("<color=#{0:X2}{1:X2}{2:X2}>{3}</color>", (byte)(color.r * 255f), (byte)(color.g * 255f), (byte)(color.b * 255f), text.Text));
-    }*/
 
     private void UpdateActionTextUI(TextElementBase text)
     {
