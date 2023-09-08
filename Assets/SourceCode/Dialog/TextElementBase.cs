@@ -15,8 +15,8 @@ public enum TextColor
 [Serializable]
 public enum Speaker
 {
-    IDOL,
-    MANAGER
+    MANAGER,
+    IDOL
 }
 
 [Serializable]
