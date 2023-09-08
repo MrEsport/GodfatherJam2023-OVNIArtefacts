@@ -1,6 +1,8 @@
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public enum GameplayState
 {
@@ -14,6 +16,11 @@ public class GameLoop : MonoBehaviour
 {
     #region Static Instance
     private static GameLoop _instance;
+    #endregion
+
+    #region Game Events
+    public static event UnityAction OnGameStart { add => _instance?.onGameStart?.AddListener(value); remove => _instance?.onGameStart?.RemoveListener(value); }
+    [SerializeField] private GameEvent onGameStart;
     #endregion
 
     [SerializeField, Expandable] private ProgressionStats stats;
@@ -106,5 +113,16 @@ public class GameLoop : MonoBehaviour
     {
         Debug.Log("Player Dead lol, Game Over  x.x");
         _currentGameState = GameplayState.Ending;
+        InputManager.OnInputPressed += _ => RestartLevel();
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void OnDestroy()
+    {
+        onGameStart?.RemoveAllListeners();
     }
 }

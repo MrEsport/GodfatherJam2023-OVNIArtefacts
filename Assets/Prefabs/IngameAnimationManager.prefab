@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4036200654723053061
+--- !u!1 &7753689482597477637
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6147138175567596370}
-  - component: {fileID: 114912410528551922}
+  - component: {fileID: 6555139774346980848}
+  - component: {fileID: 7770219737866102820}
   m_Layer: 0
-  m_Name: Gameloop Manager
+  m_Name: IngameAnimationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6147138175567596370
+--- !u!4 &6555139774346980848
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4036200654723053061}
+  m_GameObject: {fileID: 7753689482597477637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,16 +32,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114912410528551922
+--- !u!114 &7770219737866102820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4036200654723053061}
+  m_GameObject: {fileID: 7753689482597477637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f896acd42cc678438d62660fda8229f, type: 3}
+  m_Script: {fileID: 11500000, guid: d3b38efbb36d46d4eae565b36cb6761a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: c691347d811d58d4e93218ee109d33cd, type: 2}
+  yunikaObj: {fileID: 0}
+  yunikaSprites:
+  - {fileID: 21300000, guid: 3e39c87abf61e5d47925028a478ef8a3, type: 3}
+  - {fileID: 21300000, guid: bd733c6987234934db0ddabc85105d40, type: 3}
+  - {fileID: 21300000, guid: 90ea92c901ef1504687b7df4e9ba4908, type: 3}
+  - {fileID: 21300000, guid: 1451ddc797963914dabd6e1946f6a92c, type: 3}
+  spotlight: {fileID: 8044065146824900877, guid: f43aaa997cfbd4b4dbf72b85d71b26d7, type: 3}
+  fallingChance: 50
+  debugSprite: 1
+  loseScreen: {fileID: 1710052752604606209, guid: 43f10abc3224e7e4ebfb5f11dfeecc86, type: 3}

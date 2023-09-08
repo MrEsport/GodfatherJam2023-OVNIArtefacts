@@ -12,12 +12,19 @@ public enum TextColor
     GREEN = 2,
     YELLOW = 3
 }
+[Serializable]
+public enum Speaker
+{
+    MANAGER,
+    IDOL
+}
 
 [Serializable]
 public abstract class TextElementBase
 {
     public string Text { get => text; }
     [SerializeField, ResizableTextArea] private string text;
+    public Speaker Speaker;
 
     public abstract Color GetTextColor { get; }
 }
