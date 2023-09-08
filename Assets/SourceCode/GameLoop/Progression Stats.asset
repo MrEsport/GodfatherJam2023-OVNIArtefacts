@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d4087e657e916438a319b5c1eb607b, type: 3}
   m_Name: Progression Stats
   m_EditorClassIdentifier: 
-  roundsBeforeRandomPhase: 10
-  maxRoundsDifficultyCap: 50
+  roundsBeforeRandomPhase: 20
+  maxRoundsDifficultyCap: 80
   textActionsPlayed: 8
-  easyTimeOnScreenInSeconds: 4
-  hardTimeOnScreenInSeconds: 1
+  easyTimeOnScreenInSeconds: 6
+  hardTimeOnScreenInSeconds: 2
   timeOnScreenLerpCurve:
     serializedVersion: 2
     m_Curve:
@@ -52,8 +52,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   healthGain: 4
   healthLoss: 15
-  scoreGain: 10
-  scoreLoss: 10
+  scoreGain: 100
+  scoreLoss: 0
   scoreMultiplierProgression:
     serializedVersion: 2
     m_Curve:
@@ -62,18 +62,18 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
+      value: 10
+      inSlope: 18
+      outSlope: 18
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
