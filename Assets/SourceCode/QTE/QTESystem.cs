@@ -24,6 +24,8 @@ public class QTESystem : MonoBehaviour
     [SerializeField] private GameEvent onQTESuccess = new GameEvent();
     public static event UnityAction OnQTEFail { add => _instance?.onQTEFail?.AddListener(value); remove => _instance?.onQTEFail?.RemoveListener(value); }
     [SerializeField] private GameEvent onQTEFail = new GameEvent();
+    public static event UnityAction<float> OnQTETick { add => _instance?.onQTETick?.AddListener(value); remove => _instance?.onQTETick?.RemoveListener(value); }
+    [SerializeField] private GameEvent<float> onQTETick = new GameEvent<float>();
     #endregion
 
     #region QTE
@@ -59,9 +61,15 @@ public class QTESystem : MonoBehaviour
         currentQTECoroutine = StartCoroutine(QTETimer(currentQTE.TimeLimit));
     }
 
-    IEnumerator QTETimer(float timer)
+    IEnumerator QTETimer(float timeInSeconds)
     {
-        yield return new WaitForSeconds(timer);
+        float timer = timeInSeconds;
+        while (timer > 0)
+        {
+            onQTETick?.Invoke(timer / timeInSeconds);
+            yield return new WaitForSeconds(Time.deltaTime);
+            timer -= Time.deltaTime;
+        }
 
         if (currentQTE != null)
             FailedQTE();
@@ -141,5 +149,6 @@ public class QTESystem : MonoBehaviour
     {
         onQTESuccess?.RemoveAllListeners();
         onQTEFail?.RemoveAllListeners();
+        onQTETick?.RemoveAllListeners();
     }
 }
