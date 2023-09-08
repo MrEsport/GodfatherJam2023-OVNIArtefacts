@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Progression Stats
   m_EditorClassIdentifier: 
   roundsBeforeRandomPhase: 20
-  maxRoundsDifficultyCap: 80
-  textActionsPlayed: 8
-  easyTimeOnScreenInSeconds: 6
+  maxRoundsDifficultyCap: 50
+  textActionsPlayed: 5
+  easyTimeOnScreenInSeconds: 4
   hardTimeOnScreenInSeconds: 2
   timeOnScreenLerpCurve:
     serializedVersion: 2
