@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         Mathf.Max(0, playerMaxHP);
         HealthBarPercentage = playerHP / playerMaxHP;
         Mathf.Clamp(HealthBarPercentage, 0, 1);
-        healthBar.rectTransform.localScale = new Vector3(HealthBarPercentage, healthBar.rectTransform.localScale.y);
+        healthBar.rectTransform.localScale = new Vector3(healthBar.rectTransform.localScale.x, HealthBarPercentage );
     }
     #endregion
 
