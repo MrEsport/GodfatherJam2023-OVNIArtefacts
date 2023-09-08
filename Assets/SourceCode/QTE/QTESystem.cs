@@ -1,12 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using NaughtyAttributes;
-using Unity.VisualScripting;
-using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine.Events;
-using Unity.Mathematics;
 
 #region QTE Misc
 public enum QTERestriction
@@ -30,7 +24,6 @@ public class QTESystem : MonoBehaviour
     [SerializeField] private GameEvent onQTESuccess = new GameEvent();
     public static event UnityAction OnQTEFail { add => _instance?.onQTEFail?.AddListener(value); remove => _instance?.onQTEFail?.RemoveListener(value); }
     [SerializeField] private GameEvent onQTEFail = new GameEvent();
-
     #endregion
 
     #region QTE
@@ -44,15 +37,24 @@ public class QTESystem : MonoBehaviour
             Destroy(this);
         _instance = this;
     }
+
     private void Start()
     {
         InputManager.OnInputPressed += InputReceived;
-        Dialog.OnTextActionRead += (b, r) => NewQTE(QTE.QTEType.MEDIUM, b, r);
+        Dialog.OnTextActionRead += NewQTE;
+
+        Player.OnPlayerLose += StopQTE;
+
+        OnQTESuccess += () => Player._instance.GainHP(currentQTE.HPBonus);
+        OnQTESuccess += () => Player._instance.GainScore(currentQTE.ScoreBonus);
+
+        OnQTEFail += () => Player._instance.LoseHP(currentQTE.HPMalus);
+        OnQTESuccess += () => Player._instance.LoseScore(currentQTE.ScoreMalus);
     }
 
-    void NewQTE(QTE.QTEType type, InputButton button, QTERestriction restr)
+    void NewQTE(InputButton button, QTERestriction restr)
     {
-        currentQTE = QTEObj.CreateQTE(type, button.ButtonCol, button.ButtonLabel, restr);
+        currentQTE = QTEObj.CreateQTE(button.ButtonCol, button.ButtonLabel, restr);
         DebugDisplayQTE(currentQTE);
         currentQTECoroutine = StartCoroutine(QTETimer(currentQTE.TimeLimit));
     }
@@ -61,20 +63,19 @@ public class QTESystem : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         Debug.Log("<b><color=red> </color></b> TIME OUT, FAILED QTE");
-        onQTEFail?.Invoke();
+        FailedQTE();
     }
-
 
     void InputReceived(InputButton input)
     {
         if (currentQTE == null) return;
         if (VerifyQTEInput(currentQTE, currentQTECoroutine, input))
         {
-            onQTESuccess?.Invoke();
+            SucceededQTE();
             Debug.Log("<b><color=green> </color></b> SUCCEEDED QTE");
-
         }
-        else onQTEFail?.Invoke();
+        else
+            FailedQTE();
     }
     bool VerifyQTEInput(QTE QTEToVerify, Coroutine QTETimer, InputButton InputToVerify)
     {
@@ -99,12 +100,40 @@ public class QTESystem : MonoBehaviour
             case QTERestriction.LABEL:
                 Debug.Log("You need to press the " + QTEToDisplay.ButtonToPress.ButtonLabel + "button ");
                 break;
-                break;
             case QTERestriction.COLOR:
                 Debug.Log("You need to press any" + QTEToDisplay.ButtonToPress.ButtonCol + " button ");
                 break;
-
         }
         Debug.Log("You have " + QTEToDisplay.TimeLimit + " seconds ! Bonus : " + QTEToDisplay.ScoreBonus);
+    }
+
+    void SucceededQTE()
+    {
+        if (currentQTE == null)
+            return;
+
+        onQTESuccess?.Invoke();
+    }
+
+    void FailedQTE()
+    {
+        if (currentQTE == null)
+            return;
+
+        onQTEFail?.Invoke();
+    }
+
+    void StopQTE()
+    {
+        if(currentQTECoroutine != null)
+            StopCoroutine(currentQTECoroutine);
+        currentQTECoroutine = null;
+        currentQTE = null;
+    }
+
+    private void OnDestroy()
+    {
+        onQTESuccess?.RemoveAllListeners();
+        onQTEFail?.RemoveAllListeners();
     }
 }

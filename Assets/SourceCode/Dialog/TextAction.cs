@@ -1,8 +1,6 @@
 using NaughtyAttributes;
 using System;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
-using UnityEngine.Events;
 
 [Serializable]
 public class TextAction : TextElementBase
@@ -48,23 +46,4 @@ public class TextAction : TextElementBase
 
     protected virtual bool _showTextColorField { get => true; }
     #endregion
-
-    #region Action Events
-    public event UnityAction OnSuccess { add => OnSuccessAction.AddListener(value); remove => OnSuccessAction.RemoveListener(value); }
-    [Header("Events")]
-    [SerializeField] private GameEvent OnSuccessAction;
-    public event UnityAction OnFailed { add => OnFailedAction.AddListener(value); remove => OnFailedAction.RemoveListener(value); }
-    [SerializeField] private GameEvent OnFailedAction;
-    #endregion
-
-    public void Success()
-    {
-        GameLoop.NextText();
-        // Gain Score/HP
-    }
-    public void Failed()
-    {
-        GameLoop.NextText();
-        // lose Score/HP
-    }
 }

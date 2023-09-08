@@ -1,9 +1,6 @@
 using NaughtyAttributes;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 
 public enum GameplayState
 {
@@ -19,15 +16,9 @@ public class GameLoop : MonoBehaviour
     private static GameLoop _instance;
     #endregion
 
-    #region Events
-    public static event UnityAction OnPlayerLose { add => _instance?.onPlayerLose.AddListener(value); remove => _instance?.onPlayerLose.RemoveListener(value); }
-    [SerializeField] private GameEvent onPlayerLose = new GameEvent();
-    #endregion
-
-    [SerializeField] private int firstPhaseActionsToPlay = 4;
+    [SerializeField, Expandable] private ProgressionStats stats;
 
     private GameplayState _currentGameState;
-    private int _textActionPlayed;
 
     private void Awake()
     {
@@ -38,24 +29,40 @@ public class GameLoop : MonoBehaviour
 
     private void Start()
     {
-        onPlayerLose.AddListener(Defeat);
+        Player.OnPlayerLose += Defeat;
 
-        _currentGameState = GameplayState.FirstPhase;
+        _currentGameState = GameplayState.Starting;
     }
 
     private void Update()
     {
-        if (_textActionPlayed <= 0 && _currentGameState == GameplayState.FirstPhase)
-            StartDialogAction();
+        switch (_currentGameState)
+        {
+            case GameplayState.Starting:
+                StartActionPhase();
+                break;
+
+            case GameplayState.FirstPhase:
+                if (!stats.HasStarted) StartDialogAction();
+                return;
+
+            case GameplayState.SecondPhase:
+                return;
+
+            case GameplayState.Ending:
+                break;
+
+            default:
+                break;
+        }
     }
 
     #region Static Singleton Functions
     public static void StartGame()
     {
-
     }
 
-    public static void NextText()
+    public static void NextAction()
     {
         _instance?.CheckUpdatePhase();
         _instance?.StartDialogAction();
@@ -66,7 +73,6 @@ public class GameLoop : MonoBehaviour
     /// </summary>
     public static void ExitGame()
     {
-        _instance?.Defeat();
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
         return;
@@ -75,26 +81,30 @@ public class GameLoop : MonoBehaviour
     } 
     #endregion
 
+    private void StartActionPhase()
+    {
+        _instance?.stats.Init();
+        _currentGameState = GameplayState.FirstPhase;
+    }
+
     private void CheckUpdatePhase()
     {
-        if (_textActionPlayed >= firstPhaseActionsToPlay)
+        if (stats.IsRoundInSecondPhase)
             _currentGameState = GameplayState.SecondPhase;
     }
 
     private void StartDialogAction()
     {
+        if (_currentGameState != GameplayState.FirstPhase && _currentGameState != GameplayState.SecondPhase)
+            return;
+
         Dialog.GenerateTextAction(_currentGameState);
-        _textActionPlayed++;
+        stats.IncrementActionsPlayed();
     }
 
     private void Defeat()
     {
         Debug.Log("Player Dead lol, Game Over  x.x");
         _currentGameState = GameplayState.Ending;
-    }
-
-    private void OnDestroy()
-    {
-        onPlayerLose?.RemoveAllListeners();
     }
 }

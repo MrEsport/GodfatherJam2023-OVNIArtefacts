@@ -118,7 +118,7 @@
                 {
                     "name": "",
                     "id": "45525b83-c9b3-4efd-bf48-300b0def4922",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -129,7 +129,7 @@
                 {
                     "name": "",
                     "id": "2afaf42f-2e9d-45d9-9531-0fc2d559e280",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -151,7 +151,7 @@
                 {
                     "name": "",
                     "id": "0396a8a4-cb0d-47ef-b34a-a7e9549375ae",
-                    "path": "<Keyboard>/g",
+                    "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -162,7 +162,7 @@
                 {
                     "name": "",
                     "id": "b8a4e58e-d934-490a-84cb-ca629669bb7b",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -173,7 +173,7 @@
                 {
                     "name": "",
                     "id": "a1fe2165-4930-4dc0-9352-6bb09e2c8086",
-                    "path": "<Keyboard>/y",
+                    "path": "<Keyboard>/u",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -184,7 +184,7 @@
                 {
                     "name": "",
                     "id": "1f456fd6-dca5-4c4e-b7a4-bb7fa49c0eb2",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -195,7 +195,7 @@
                 {
                     "name": "",
                     "id": "dce74848-0de4-485d-98f3-314a1108e020",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -206,7 +206,7 @@
                 {
                     "name": "",
                     "id": "fa5d334c-60fe-4f2a-b3d7-9422122210c0",
-                    "path": "<Keyboard>/h",
+                    "path": "<Keyboard>/o",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -217,7 +217,7 @@
                 {
                     "name": "",
                     "id": "4174f284-af76-4bad-b15e-94c350d05828",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -228,7 +228,7 @@
                 {
                     "name": "",
                     "id": "4a29ddf0-426c-42f7-b719-76b762ac555c",
-                    "path": "<Keyboard>/l",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -239,11 +239,259 @@
                 {
                     "name": "",
                     "id": "08974e12-064c-4f30-9106-a0f777298eaa",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button4Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "KeyboardMap",
+            "id": "a9ebc976-4052-4faf-a847-11124460eed8",
+            "actions": [
+                {
+                    "name": "Button1Blue",
+                    "type": "Button",
+                    "id": "5504262c-8d37-4d30-bbb7-a6ce3393b7c5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button1Red",
+                    "type": "Button",
+                    "id": "a426c1a4-a96d-400c-ab34-2be2f5c69d8b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button1Yellow",
+                    "type": "Button",
+                    "id": "23f27f3e-ec62-4ed1-8b47-2321ab26091f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button2Blue",
+                    "type": "Button",
+                    "id": "786de93a-7aca-4f20-aa45-91583ad35b4c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button2Red",
+                    "type": "Button",
+                    "id": "ace0bc47-bc59-4e1e-baa0-c4b328482412",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button2Green",
+                    "type": "Button",
+                    "id": "51dd5915-7e79-482d-93af-613e28571611",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button3Blue",
+                    "type": "Button",
+                    "id": "576a3e62-add5-47df-8b3f-2c55197ca185",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button3Yellow",
+                    "type": "Button",
+                    "id": "540fcf14-cd8d-470d-b75f-ce2c8e499311",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button3Green",
+                    "type": "Button",
+                    "id": "436ef482-f3a6-4373-b51a-272843d291c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button4Green",
+                    "type": "Button",
+                    "id": "ecb6ce33-4f14-4423-bf65-f415e9f62fb6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button4Red",
+                    "type": "Button",
+                    "id": "6fa1dcdf-a00c-4026-9b30-2d51c6c9d8d2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button4Yellow",
+                    "type": "Button",
+                    "id": "3f5fde07-d32d-43ba-bb74-da8227181342",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2f1c8f08-d160-4c81-bcb0-69275c967a72",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button1Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3065d608-83a4-428a-96b8-0c2a3a08646c",
                     "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Button4Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "115b475c-5962-4274-bfdd-f1b68cf1e7cf",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button4Red",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9a2892d-20fe-4f88-b194-48cbdb6a74dd",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button4Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ca6a4fb-c143-4fc7-8c93-b83e1adc8ff7",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button3Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c8d1429-1a4a-4e42-b6b9-ceea4d7ef40b",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button3Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3047ce0-8afa-48f8-855d-48da548c909b",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button3Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cdc940a-90e1-4610-bb21-341c5a1ccd84",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button2Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae0088a2-87da-461e-bfa3-5ac611b85c1b",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button2Red",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c57d7842-3ebc-4cd2-807f-2904d75666f4",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button2Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7863cbda-16de-42ba-890e-e8e274520d07",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button1Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e729071-a735-43d0-81cc-89f64f18c4fc",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button1Red",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

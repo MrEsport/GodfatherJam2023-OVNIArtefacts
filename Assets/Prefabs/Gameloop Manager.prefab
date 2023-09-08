@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f896acd42cc678438d62660fda8229f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPlayerDeath:
+  onPlayerLose:
     m_PersistentCalls:
       m_Calls: []
+  stats: {fileID: 11400000, guid: c691347d811d58d4e93218ee109d33cd, type: 2}
