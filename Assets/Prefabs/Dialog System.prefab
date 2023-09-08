@@ -46,6 +46,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onTextActionRead:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: speakidol1
+          m_BoolArgument: 0
+        m_CallState: 2
   speechTextLibrary: {fileID: 11400000, guid: c3d11d057cafd2c4c91a2f3d89ffc133, type: 2}
   inputButtonsLibrary: {fileID: 11400000, guid: 071cbd1e374429640b8d81b74e9d538c, type: 2}
+  idolBubbleObject: {fileID: 0}
+  managerBubbleObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  feedback_UIText: {fileID: 0}
+  bubbleSprites:
+  - {fileID: 21300000, guid: cf679a213a0be5745a1ee897480e3c94, type: 3}
+  - {fileID: 21300000, guid: b5590649756169b45954e22aef556269, type: 3}
+  - {fileID: 21300000, guid: f54994175a938f6479940d1b39f36bb5, type: 3}

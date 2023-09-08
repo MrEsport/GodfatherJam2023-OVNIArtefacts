@@ -146,7 +146,7 @@ MonoBehaviour:
   - name: badinput
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: f6eb52b75c691b941b19e2a6b5c64cda, type: 3}
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
   - name: Gameover
