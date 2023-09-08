@@ -27,11 +27,13 @@ public class Dialog : MonoBehaviour
     [SerializeField] private List<GameObject> managerBubbleObjects;
     [SerializeField] private TMP_Text feedback_UIText;
     [SerializeField] private List<Sprite> bubbleSprites;
+    [SerializeField] private Image timerFillImage;
     private TMP_Text _idoltextAction_UIText;
     private List<TMP_Text> _managertextAction_UITexts;
     private Image _idolBubbleImage;
     private List<Image> _managerBubbleImages;
     private Image _usedBubbleImage;
+    private GameObject _timerUIObject;
 
     private TextAction _currentTextAction;
 
@@ -49,6 +51,7 @@ public class Dialog : MonoBehaviour
         QTESystem.OnQTEFail += ReadFeedback;
         QTESystem.OnQTEFail += () => SetBubbleSprite(_usedBubbleImage, 2);
         QTESystem.OnQTESuccess += () => SetBubbleSprite(_usedBubbleImage, 1);
+        QTESystem.OnQTETick += SetTimerFill;
 
         _idoltextAction_UIText = idolBubbleObject.GetComponentInChildren<TMP_Text>();
         _idolBubbleImage = idolBubbleObject.GetComponent<Image>();
@@ -59,6 +62,7 @@ public class Dialog : MonoBehaviour
             _managertextAction_UITexts.Add(managerBubbleObjects[i].GetComponentInChildren<TMP_Text>());
             _managerBubbleImages.Add(managerBubbleObjects[i].GetComponent<Image>());
         }
+        _timerUIObject = timerFillImage.transform.parent.gameObject;
 
         HideAllBubbles();
     }
@@ -112,6 +116,7 @@ public class Dialog : MonoBehaviour
                 break;
         }
         SetBubbleSprite(_usedBubbleImage, 0);
+        _timerUIObject.gameObject.SetActive(true);
     }
 
     private void UpdateTextUI(TMP_Text uiText, TextElementBase text)
@@ -132,11 +137,15 @@ public class Dialog : MonoBehaviour
         bubble.sprite = bubbleSprites[index];
     }
 
+    private void SetTimerFill(float fill) => timerFillImage.fillAmount = fill;
+
     private void HideAllBubbles()
     {
         idolBubbleObject.gameObject.SetActive(false);
         for (int i = 0; i < managerBubbleObjects.Count; i++)
             managerBubbleObjects[i].gameObject.SetActive(false);
+        _timerUIObject.SetActive(false);
+
     }
 
     private void StopDialog()
