@@ -1,10 +1,6 @@
 using NaughtyAttributes;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 
 public enum GameplayState
 {

@@ -168,10 +168,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: Le Rouge proche de l'enceinte !
-    textColor: -1
+    textColor: 1
     awaitedActionType: 1
     actionButtonColor: 0
-    actionButton: 1
+    actionButton: 10
     OnSuccessAction:
       m_PersistentCalls:
         m_Calls: []
@@ -179,10 +179,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: Le Jaune proche des enceintes !
-    textColor: -1
+    textColor: 3
     awaitedActionType: 1
     actionButtonColor: 0
-    actionButton: 11
+    actionButton: 2
     OnSuccessAction:
       m_PersistentCalls:
         m_Calls: []
@@ -201,7 +201,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: Le Bleu a droite de Yunika !
-    textColor: -1
+    textColor: 0
     awaitedActionType: 1
     actionButtonColor: 0
     actionButton: 6
@@ -212,7 +212,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: Le Vert a gauche de Yunika !
-    textColor: -1
+    textColor: 2
     awaitedActionType: 1
     actionButtonColor: 0
     actionButton: 5
@@ -248,7 +248,7 @@ MonoBehaviour:
   - text: Du Vert !
     textColor: 0
     awaitedActionType: 0
-    actionButtonColor: 0
+    actionButtonColor: 3
     actionButton: 0
     OnSuccessAction:
       m_PersistentCalls:
@@ -259,7 +259,7 @@ MonoBehaviour:
   - text: Du Rouge !
     textColor: 0
     awaitedActionType: 0
-    actionButtonColor: 0
+    actionButtonColor: 1
     actionButton: 0
     OnSuccessAction:
       m_PersistentCalls:
@@ -270,7 +270,7 @@ MonoBehaviour:
   - text: Du Jaune !
     textColor: 0
     awaitedActionType: 0
-    actionButtonColor: 0
+    actionButtonColor: 2
     actionButton: 0
     OnSuccessAction:
       m_PersistentCalls:
@@ -436,7 +436,7 @@ MonoBehaviour:
     textColor: 0
     awaitedActionType: 1
     actionButtonColor: 0
-    actionButton: 1
+    actionButton: 0
     OnSuccessAction:
       m_PersistentCalls:
         m_Calls: []
