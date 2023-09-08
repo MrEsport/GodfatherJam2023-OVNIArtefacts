@@ -1,12 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using NaughtyAttributes;
-using Unity.VisualScripting;
-using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine.Events;
-using Unity.Mathematics;
 
 #region QTE Misc
 public enum QTERestriction
