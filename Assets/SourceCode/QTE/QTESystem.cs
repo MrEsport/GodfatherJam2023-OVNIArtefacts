@@ -62,24 +62,28 @@ public class QTESystem : MonoBehaviour
     IEnumerator QTETimer(float timer)
     {
         yield return new WaitForSeconds(timer);
-        Debug.Log("<b><color=red> </color></b> TIME OUT, FAILED QTE");
-        FailedQTE();
+
+        if (currentQTE != null)
+            FailedQTE();
+
+        GameLoop.NextAction();
     }
 
     void InputReceived(InputButton input)
     {
         if (currentQTE == null) return;
+
         if (VerifyQTEInput(currentQTE, currentQTECoroutine, input))
-        {
             SucceededQTE();
-            Debug.Log("<b><color=green> </color></b> SUCCEEDED QTE");
-        }
         else
             FailedQTE();
     }
+    
     bool VerifyQTEInput(QTE QTEToVerify, Coroutine QTETimer, InputButton InputToVerify)
     {
-        StopCoroutine(QTETimer);
+        if (currentQTE == null || currentQTECoroutine == null)
+            return false;
+
         bool doColorsMatch = InputToVerify.ButtonCol == QTEToVerify.ButtonToPress.ButtonCol;
         bool doLabelsMatch = InputToVerify.ButtonLabel == QTEToVerify.ButtonToPress.ButtonLabel;
         switch (QTEToVerify.QTERestr)
@@ -113,6 +117,7 @@ public class QTESystem : MonoBehaviour
             return;
 
         onQTESuccess?.Invoke();
+        currentQTE = null;
     }
 
     void FailedQTE()
@@ -121,6 +126,7 @@ public class QTESystem : MonoBehaviour
             return;
 
         onQTEFail?.Invoke();
+        currentQTE = null;
     }
 
     void StopQTE()
