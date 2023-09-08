@@ -77,10 +77,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Test
+  - name: musiquefond
     source: {fileID: 0}
-    clip: {fileID: 8300000, guid: b8db31817f46f204ba68b67902916ab4, type: 3}
+    clip: {fileID: 8300000, guid: 27b9d41658acc464e83ff825fecb955c, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     loop: 0
-  DebugSound: Test
+  - name: speakidol1
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 12c4d3855f8e3144c886857a05efa40e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: speakidol2
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 5f621313e65e8f241b932a694e551f94, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: speakidol3
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 0992b0da5f2c2864692ef2f76bb57aa6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: speakmanager1
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 52cf0c4dda366b74daf880c55acbded9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: speakmanager2
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: b0930a45bcf3bc74fb6896d2087737d3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: speakmanager3
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: d7c8b094496fcfa4b9f792f8da714c13, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: speakmanager4
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 33149325ddddffe4482ff9ac0aae50fd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: speakmanager5
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: de8e69df180f6ff498bdfd296de127cc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: speakmanager6
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 82fcded3107a40f4abeda1f23a2047f1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: goodinput
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: e908384b7f86fba4f9c0970219006961, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: badinput
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: f6eb52b75c691b941b19e2a6b5c64cda, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: Gameover
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 90ec0badcea2bba4c9857e191eaa1b3c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  DebugSound: badinput
