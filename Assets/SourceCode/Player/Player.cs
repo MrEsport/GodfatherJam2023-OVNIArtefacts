@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] Image healthBar;
-    [SerializeField, Range(0,1)] float HealthBarPercentage;
+    [SerializeField, Range(0, 1)] float HealthBarPercentage;
 
     [SerializeField] float playerMaxHP;
     [SerializeField] float playerHP;
@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
 
     private void OnValidate()
     {
-        playerHP = playerMaxHP * HealthBarPercentage;
-        UpdateHealthbar();
+        //playerHP = playerMaxHP * HealthBarPercentage;
+        //UpdateHealthbar();
     }
 
     private void Awake()
@@ -43,8 +43,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         healthBar.gameObject.SetActive(true);
-        Debug.Log("Player HP: >" +  playerHP);
-        Debug.Log("Player Score: >" +  playerScore);
+        Debug.Log("Player HP: >" + playerHP);
+        Debug.Log("Player Score: >" + playerScore);
     }
     #endregion
 
@@ -83,7 +83,10 @@ public class Player : MonoBehaviour
         UpdateHealthbar();
 
         if (playerHP <= 0)
-            onPlayerLose?.Invoke();
+        {
+        Debug.Log("<b><color=red> AUUUUUUUUUUUUUUUUUUGH:  </color></b>");
+        onPlayerLose?.Invoke();
+        }
     }
     #endregion
 
@@ -92,22 +95,24 @@ public class Player : MonoBehaviour
     void UpdateHealthbar()
     {
         if (playerHP > playerMaxHP) playerHP = playerMaxHP;
-        Mathf.Clamp(playerHP, 0, playerMaxHP);
+        playerHP = Mathf.Clamp(playerHP, 0, playerMaxHP);
         Mathf.Max(0, playerMaxHP);
         HealthBarPercentage = playerHP / playerMaxHP;
         Mathf.Clamp(HealthBarPercentage, 0, 1);
-        healthBar.rectTransform.localScale = new Vector3(healthBar.rectTransform.localScale.x, HealthBarPercentage );
+        healthBar.rectTransform.localScale = new Vector3(healthBar.rectTransform.localScale.x, HealthBarPercentage);
     }
     #endregion
 
     #region Debug methods
-    [Button] void DebugGainHP()
+    [Button]
+    void DebugGainHP()
     {
         GainHP(debugHPAmount);
         UpdateHealthbar();
     }
 
-    [Button] void DebugLoseHP()
+    [Button]
+    void DebugLoseHP()
     {
         LoseHP(debugHPAmount);
         UpdateHealthbar();

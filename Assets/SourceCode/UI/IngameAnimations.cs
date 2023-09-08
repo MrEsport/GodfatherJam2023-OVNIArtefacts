@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class IngameAnimations : MonoBehaviour
@@ -11,6 +12,9 @@ public class IngameAnimations : MonoBehaviour
     [SerializeField,Range(0,100)] int fallingChance = 50;
     [SerializeField,Range(0,3)] int debugSprite;
 
+    [SerializeField] GameObject loseScreen;
+    [SerializeField] GameObject speechBubbles;
+
 
     private void Awake()
     {
@@ -19,9 +23,12 @@ public class IngameAnimations : MonoBehaviour
 
     private void Start()
     {
+        loseScreen.SetActive(false);
+        speechBubbles.SetActive(true);
+        currentSprite = 2;
         QTESystem.OnQTESuccess += QTESuccess;
         QTESystem.OnQTEFail += QTEfail;
-        Player.OnPlayerLose += () => ChangeYunikaSprite(0);
+        Player.OnPlayerLose += GameOver;
         ChangeYunikaSprite(2);
     }
 
@@ -42,7 +49,7 @@ public class IngameAnimations : MonoBehaviour
     }
     void ChangeYunikaSprite(int newSprite)
     {
-        Mathf.Clamp(newSprite, 1, yunikaSprites.Length);
+        newSprite = Mathf.Clamp(newSprite, 1, yunikaSprites.Length - 1);
         yunikaObj.sprite = yunikaSprites[newSprite];
     }
 
@@ -67,5 +74,12 @@ public class IngameAnimations : MonoBehaviour
     }
 
     #endregion
+
+    void GameOver()
+    {
+        yunikaObj.sprite = yunikaSprites[0];
+        loseScreen.gameObject.SetActive(true);
+        speechBubbles.gameObject.SetActive(false);
+    }
 
 }

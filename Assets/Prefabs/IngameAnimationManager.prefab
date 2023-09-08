@@ -53,3 +53,4 @@ MonoBehaviour:
   spotlight: {fileID: 8044065146824900877, guid: f43aaa997cfbd4b4dbf72b85d71b26d7, type: 3}
   fallingChance: 50
   debugSprite: 1
+  loseScreen: {fileID: 1710052752604606209, guid: 43f10abc3224e7e4ebfb5f11dfeecc86, type: 3}

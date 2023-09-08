@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6147138175567596370}
   - component: {fileID: 114912410528551922}
-  - component: {fileID: 5552489470763907206}
   m_Layer: 0
   m_Name: Gameloop Manager
   m_TagString: Untagged
@@ -46,18 +45,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: c691347d811d58d4e93218ee109d33cd, type: 2}
---- !u!114 &5552489470763907206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4036200654723053061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b38efbb36d46d4eae565b36cb6761a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  YunikaSprite: {fileID: 0}
-  Spotlight1: {fileID: 0}
-  Spotlight2: {fileID: 0}

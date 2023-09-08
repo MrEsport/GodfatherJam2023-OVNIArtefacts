@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameplayState
 {
@@ -106,5 +107,11 @@ public class GameLoop : MonoBehaviour
     {
         Debug.Log("Player Dead lol, Game Over  x.x");
         _currentGameState = GameplayState.Ending;
+        InputManager.OnInputPressed += _ => RestartLevel();
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 }
